@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-open</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-open" fill-rule="nonzero" fill="#49535C">
+            <g transform="translate(9.000000, 9.000000) rotate(90.000000) translate(-9.000000, -9.000000) translate(2.000000, 2.000000)" id="Shape">
+                <path d="M7.7526304,0.320126288 C7.32599761,-0.109676906 6.63262426,-0.105907371 6.2057393,0.326719937 L0.34257358,6.26875565 C-0.696365654,7.30393197 0.862410572,8.85706249 1.90134981,7.82188618 L5.37963375,4.35620016 C5.66593774,4.07093313 5.89803294,4.16756025 5.89803294,4.57359898 L5.89803294,12.9018639 C5.89803294,13.5084011 6.39141887,14 7.00016084,14 C7.60890282,14 8.10228874,13.5084011 8.10228874,12.9018639 L8.10228874,4.57359898 C8.10228874,4.16826592 8.33442109,4.07099141 8.62064029,4.35620016 L12.0986045,7.82188618 C13.1379111,8.85706249 14.69632,7.30393197 13.6573807,6.26875565 L7.7526304,0.320126288 Z" transform="translate(7.000000, 7.000000) rotate(90.000000) translate(-7.000000, -7.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>
