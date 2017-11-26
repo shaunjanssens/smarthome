@@ -4,11 +4,14 @@ import styled from "styled-components";
 
 type PropTypes = {};
 
-const Wrapper = styled.div`
+const WrapperContainer = styled.div`
   width: 100%;
-  max-width: ;
+  height: 100%;
+  position: relative;
 `;
 
 export default class Wrapper extends Component<PropTypes> {
-  rende() {}
+  render() {
+    return <WrapperContainer>{this.props.children}</WrapperContainer>;
+  }
 }

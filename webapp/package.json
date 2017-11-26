@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@storybook/cli": "^3.2.16",
+    "firebase": "^4.6.2",
     "flow-bin": "^0.59.0",
     "global": "^4.3.2",
     "react": "^16.1.1",
