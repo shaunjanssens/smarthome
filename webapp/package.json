@@ -3,22 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@storybook/cli": "^3.2.16",
-    "firebase": "^4.6.2",
-    "flow-bin": "^0.59.0",
-    "global": "^4.3.2",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
+    "firebase": "^4.8.1",
+    "flow-bin": "^0.61.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
     "react-scripts": "1.0.17",
-    "styled-components": "^2.2.3"
+    "styled-components": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "flow": "flow"
   }
 }

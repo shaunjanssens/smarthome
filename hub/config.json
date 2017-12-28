@@ -1,0 +1,93 @@
+{
+  "system": {
+    "name": "Smart Home",
+    "description":
+      "With Smart Home you can turn on your lights, close your blinds and control the inside temperature."
+  },
+  "firebase": {
+    "type": "service_account",
+    "project_id": "smarthome-9d4f6",
+    "private_key_id": "ef19face7cf5dee113fd31406f4e249193cf4487",
+    "private_key":
+      "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDF7O/AWdovLwVw\nvBGasU1x14sA8cigXVpUGlHNafeHIPauXnaTKwwdRjO1GtmJkCyJJa7ETQ623I+v\n87BzFCRXL/g6rx5mzHx6ilVYIu3unqp99x21FaJo8yKRFJZwvYrn5VFsM5SNXj71\ntGDwwISn8LkA/2KPynt1UsbDsmjCQifWkgb8kIoUYLHQUSbTBdpvlxPN2/hHv78n\nv/5bUN29Fj0cwh8fPSNhssvehEh7WMAAGNNnwn5sKaPz/AmZ5U3TlgXGSoeQe5S4\noyAIsZDruSVNLwkqT942pOw7/FBw8Y8xe/X9GYVTfpAPwVdULsrayT9fLMzidrgr\nHR03VgXzAgMBAAECggEAU92RO153Un3onru58+PD7oSH7FcHDVhxEWjzl4gar+Ha\nVMlHEhXv9KmN+GPPoHf8PwK+GoSSQw6TPdmSvzheK6lyU59nUOS9rAjYn9dxHSaT\nFHv01Qm9Px4i2/muw0e1R4yGI0R54ir4n5EWcH0K2MRqB8+u+kGwbWatPTfoJsM1\nIb3zvYzllDQRkDLhuIXN2z5dKMBxTFVqvfIdpWFzQtOxEZZuVf5zi4RY3o2gMkpg\nmocINbLuKQUHW6FhCARqEzV9b6wCcBunaBImUADXKOeIUKpWN6eV7BN/Vqz7l4Jk\nEtrfqWy4kb/ZIuIF5KkjkQi2PuuvS+v2OxXV6Ry/mQKBgQDy2O8k2NDIdsz+qdak\n2bnYjT7NTskwrukmA4TEB8DB5K6pz75xpMhseVNXRn8DNpi1WmU3MfbjPRAOsI6w\nVHVBjpihcCjtpFZ6PUPnPUbYePcEGYXEmJClXFj11TODl3oGLf4R8ZDiREgPKXS7\nupYsZji38DqQTimyUONrACUMOwKBgQDQpSnFsMkPustejn6CZ0MzMLA1lDOoaqs2\nznFpAW130EiHEdDxZxuT+5cg5dJ++7kiE91IBuqt5NYpspR7Fijrei5vMKX45JSB\n29+PzLqozBTjk8dxH6TLu8iN/jQ1v+rWgj7TQBdE+316zctalBZxjJmR7qwwyspe\nZxZUFoqpqQKBgQCsTGIQAIzRTgjPvmx99cQ38q7WN8ni8paU0/ZEp0OJzdhmvvBd\n7Q4OeF47E9dVzky2jvY1HQwP2ekkovv5+1JeOu/ryoofYXPBsuoUjJNRTzHjBMC1\n5ZDq4gR0Fto/yR9YdxVGYd/ryYpex4j9ELsvsS8Ywiaq7+oBjAZuimG+tQKBgDSD\njYr7Xu+9lRg8hyztLqXAuGkT3xihmGxX84V5XYMNgmO0oUFRMUjCxxv5nExnsQYZ\nt9U8IG8aLKkcEHEWd8Ak5XEI7o1BgvtYSuGXptd7XjqVZFpdm43Huse6Vou8vS+2\nYnerJvAu2DtDds5afXeg6ronN2GkeODf02fgsI/ZAoGBAN8arzPQ8KDsfLIKCSmB\n5ZTO6j9ebzTLNwxcmwf0wS3pOw5BoX9/mYh1uuvhG3AyOqq7GBDt8dYMAkvK4ZP2\nrOitIYhaVF1OQ/ZgTKHBI6JX9SUSe60MpMMJ+btNSUnvFD630BTrLoEP40sFu00k\nBe6EdY3MvzdqLcC5cMXk5e+R\n-----END PRIVATE KEY-----\n",
+    "client_email":
+      "firebase-adminsdk-xkqzu@smarthome-9d4f6.iam.gserviceaccount.com",
+    "client_id": "113705789717319759126",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://accounts.google.com/o/oauth2/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url":
+      "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-xkqzu%40smarthome-9d4f6.iam.gserviceaccount.com",
+    "database_url": "https://smarthome-9d4f6.firebaseio.com"
+  },
+  "mqtt": {
+    "host": "mqtt://m23.cloudmqtt.com",
+    "port": 19235,
+    "username": "xuepegwq",
+    "password": "hfAFTh1heVSy"
+  },
+  "devices": [
+    {
+      "platform": "lights",
+      "name": "Shaun's room",
+      "topic": "outlet-outlet1"
+    },
+    {
+      "platform": "lights",
+      "name": "Kitchen",
+      "topic": "outlet-outlet2"
+    },
+    {
+      "platform": "lights",
+      "name": "Living room",
+      "topic": "outlet-outlet3"
+    },
+    {
+      "platform": "lights",
+      "name": "Christmas lights",
+      "topic": "outlet-outlet4"
+    },
+    {
+      "platform": "blinds",
+      "name": "Living room",
+      "topic": "blinds-blinds1"
+    },
+    {
+      "platform": "blinds",
+      "name": "Kitchen room",
+      "topic": "blinds-blinds2"
+    },
+    {
+      "platform": "blinds",
+      "name": "Garage door",
+      "topic": "blinds-blinds3"
+    }
+  ],
+  "sensors": [
+    {
+      "platform": "temperature",
+      "name": "Temperature",
+      "topic": "temperature"
+    },
+    {
+      "platform": "humidity",
+      "name": "Humidity",
+      "topic": "humidity"
+    }
+  ],
+  "scenarios": [
+    {
+      "if": {
+        "topic": "temperature",
+        "morethan": "25"
+      },
+      "then": {
+        "post":
+          "https://maker.ifttt.com/trigger/climate/with/key/nPEfrtJodonXqmMpJxX7iPtbDBm_s7KY9fR9m_M_RU7",
+        "data": {
+          "value1": "25"
+        }
+      }
+    }
+  ]
+}

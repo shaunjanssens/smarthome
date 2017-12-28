@@ -1,31 +1,52 @@
-// @Flow
+// @flow
 import React, { Component } from "react";
 import styled from "styled-components";
-import Wrapper from "../components/wrapper";
-import Header from "../components/header";
-import Button from "../components/button";
+import { Button } from "../components/common";
+import type { SystemType } from "../types";
 
-const LoginButton = styled(Button)`
-  position: absolute;
-  bottom: 0;
+type PropTypes = {
+  system: SystemType
+};
+
+const Container = styled.div`
+  position: relative;
+  height: 100%;
+`;
+const Title = styled.h1``;
+const Form = styled.div``;
+const Input = styled.input`
   width: 100%;
+  height: 50px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-family: inherit;
+  border: 1px solid rgba(73, 83, 92, 0.1);
+  border-radius: 3px;
+  outline: none;
+  margin-bottom: 20px;
+
+  &::placeholder {
+    color: rgba(73, 83, 92, 0.4);
+  }
 `;
 
-type PropTypes = {};
+const Login = ({ system }: PropTypes) => {
+  return (
+    <Container>
+      <Title>{system.name}</Title>
+      <p>{system.description}</p>
+      <Form>
+        <Input type="text" placeholder="username" />
+        <Input type="password" placeholder="password" />
+        <Button
+          value="sign in"
+          onClick={() => {
+            console.log("clicked");
+          }}
+        />
+      </Form>
+    </Container>
+  );
+};
 
-export default class LoginPage extends Component<PropTypes> {
-  render() {
-    return (
-      <Wrapper>
-        <Header title="Welcome back!" icons={false} />
-        <p>
-          With Smart Home you can turn on your lights, close your blinds and
-          control the inside temperature.
-        </p>
-        <LoginButton google onClick={this.props.login}>
-          login with Google
-        </LoginButton>
-      </Wrapper>
-    );
-  }
-}
+export default Login;

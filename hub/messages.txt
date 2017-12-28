@@ -1,0 +1,701 @@
+Message recieved from hub with payload: Hub online at 1514392614719Message recieved with payload: Hub online at 1514392845246Message recieved with payload: Hub online at 1514392868580
+Message recieved with payload: Hub online at 1514394134012
+Message recieved with payload: Hub online at 1514396127303
+Message recieved with payload: Hub online at 1514396339792
+Message recieved with payload: Hub online at 1514396451229
+Topic changed: Shaun's room with payload: 0
+Topic changed: Shaun's room with payload: 1
+Topic changed: Kitchen with payload: 1
+Topic changed: Living room with payload: 1
+Topic changed: Shaun's room with payload: 0
+Topic changed: Kitchen with payload: 0
+Topic changed: Living room with payload: 0
+Topic changed: Shaun's room with payload: 1
+Topic changed: Christmas lights with payload: 1
+Topic changed: Kitchen with payload: 1
+Topic changed: Living room with payload: 1
+Topic changed: Shaun's room with payload: 0
+Topic changed: Christmas lights with payload: 0
+Topic changed: Living room with payload: 1
+Topic changed: Living room with payload: 0
+Topic changed: Living room with payload: 1
+Topic changed: Living room with payload: 0
+Message recieved with payload: Hub online at 1514401418503
+Topic changed: Shaun's room with payload: 1
+Topic changed: Shaun's room with payload: 0
+Topic changed: Shaun's room with payload: 1
+Topic changed: Shaun's room with payload: 0
+Topic changed: Shaun's room with payload: 1
+Topic changed: Shaun's room with payload: 0
+Topic changed: Shaun's room with payload: 1
+Topic changed: Shaun's room with payload: 0
+Topic created: Kitchen room(blinds-blinds2)
+Topic created: Garage door(blinds-blinds3)
+Topic created: Garage door(blinds-blinds3)
+Topic created: Living room(blinds-blinds1)
+Topic created: Kitchen room(blinds-blinds2)
+Topic created: Garage door(blinds-blinds3)
+Topic created: Christmas lights(outlet-outlet4)
+Topic created: Living room(blinds-blinds1)
+Topic created: Kitchen room(blinds-blinds2)
+Topic created: Garage door(blinds-blinds3)
+Topic created: Living room(outlet-outlet3)
+Topic created: Christmas lights(outlet-outlet4)
+Topic created: Living room(blinds-blinds1)
+Topic created: Kitchen room(blinds-blinds2)
+Topic created: Garage door(blinds-blinds3)
+Topic created: Kitchen(outlet-outlet2)
+Topic created: Living room(outlet-outlet3)
+Topic created: Christmas lights(outlet-outlet4)
+Topic created: Living room(blinds-blinds1)
+Topic created: Kitchen room(blinds-blinds2)
+Topic created: Garage door(blinds-blinds3)
+Topic created: Shaun's room(outlet-outlet1)
+Topic created: Kitchen(outlet-outlet2)
+Topic created: Living room(outlet-outlet3)
+Topic created: Christmas lights(outlet-outlet4)
+Topic created: Living room(blinds-blinds1)
+Topic created: Kitchen room(blinds-blinds2)
+Topic created: Garage door(blinds-blinds3)
+Message recieved with payload: Hub online at 1514403133977
+Topic created: Shaun's room(outlet-outlet1)
+Topic created: Kitchen(outlet-outlet2)
+Topic created: Living room(outlet-outlet3)
+Topic created: Christmas lights(outlet-outlet4)
+Topic created: Living room(blinds-blinds1)
+Topic created: Kitchen room(blinds-blinds2)
+Topic created: Garage door(blinds-blinds3)
+Topic changed: Shaun's room with payload: 1
+Topic changed: Kitchen with payload: 1
+Topic changed: Christmas lights with payload: 1
+Message recieved with payload: Hub online at 1514406493298
+Message recieved with payload: Hub online at 1514410375467
+Topic changed: Living room with payload: 1
+Topic changed: Living room with payload: 0
+Topic changed: Living room with payload: 1
+Topic changed: Living room with payload: 0
+Topic changed: Kitchen with payload: 0
+Topic changed: Living room with payload: 1
+Topic changed: Christmas lights with payload: 0
+Topic changed: Kitchen with payload: 1
+Topic changed: Kitchen with payload: 0
+Topic changed: Christmas lights with payload: 1
+Topic changed: Christmas lights with payload: 0
+Message recieved with payload: Hub online at 1514417003614
+Message recieved with payload: Hub online at 1514417033659
+Message recieved with payload: Hub online at 1514417063908
+Message recieved with payload: Hub online at 1514417120822
+Topic changed: thermostat with payload: 6
+Topic changed: thermostat with payload: 5
+Topic changed: thermostat with payload: 6
+Topic changed: thermostat with payload: 7
+Topic changed: thermostat with payload: 8
+Topic changed: thermostat with payload: 7
+Topic changed: thermostat with payload: 6
+Topic changed: thermostat with payload: 5
+Topic changed: thermostat with payload: 4
+Topic changed: thermostat with payload: 3
+Topic changed: thermostat with payload: 2
+Topic changed: thermostat with payload: 1
+Topic changed: thermostat with payload: 0
+Topic changed: thermostat with payload: 1
+Topic changed: thermostat with payload: 2
+Topic changed: thermostat with payload: 3
+Topic changed: thermostat with payload: 4
+Topic changed: thermostat with payload: 5
+Topic changed: thermostat with payload: 6
+Topic changed: thermostat with payload: 7
+Topic changed: thermostat with payload: 8
+Topic changed: thermostat with payload: 9
+Topic changed: thermostat with payload: 10
+Topic changed: thermostat with payload: 11
+Topic changed: thermostat with payload: 12
+Topic changed: thermostat with payload: 13
+Topic changed: thermostat with payload: 14
+Topic changed: thermostat with payload: 13
+Topic changed: thermostat with payload: 12
+Topic changed: thermostat with payload: 11
+Topic changed: thermostat with payload: 9
+Topic changed: thermostat with payload: 8
+Topic changed: thermostat with payload: 7
+Topic changed: thermostat with payload: 5
+Topic changed: thermostat with payload: 4
+Topic changed: thermostat with payload: 3
+Topic changed: thermostat with payload: 2
+Topic changed: temperature with payload: 0
+Topic changed: humidity with payload: 0
+Topic changed: temperature with payload: 20
+Topic changed: humidity with payload: 45
+Topic changed: humidity with payload: 42
+Topic changed: humidity with payload: 41
+Topic changed: humidity with payload: 40
+Topic changed: humidity with payload: 42
+Topic changed: temperature with payload: 19
+Topic changed: humidity with payload: 41
+Topic changed: temperature with payload: 20
+Topic changed: temperature with payload: 19
+Topic changed: humidity with payload: 40
+Topic changed: Kitchen with payload: 1
+Topic changed: Kitchen with payload: 0
+Topic changed: Christmas lights with payload: 1
+Topic changed: Christmas lights with payload: 0
+Topic changed: temperature with payload: 18
+Topic changed: Christmas lights with payload: 1
+Topic changed: Christmas lights with payload: 0
+Topic changed: humidity with payload: 41
+Topic changed: humidity with payload: 43
+Topic changed: humidity with payload: 41
+Topic changed: humidity with payload: 42
+Topic changed: humidity with payload: 43
+Topic changed: humidity with payload: 42
+Topic changed: temperature with payload: 17
+Topic changed: humidity with payload: 41
+Topic changed: temperature with payload: 18
+Topic changed: humidity with payload: 43
+Topic changed: temperature with payload: 17
+Topic changed: humidity with payload: 42
+Topic changed: humidity with payload: 43
+Topic changed: humidity with payload: 44
+Topic changed: humidity with payload: 46
+Topic changed: humidity with payload: 45
+Topic changed: humidity with payload: 46
+Topic changed: humidity with payload: 48
+Topic changed: humidity with payload: 46
+Topic changed: temperature with payload: 16
+Topic changed: humidity with payload: 47
+Topic changed: humidity with payload: 48
+Topic changed: humidity with payload: 49
+Topic changed: humidity with payload: 48
+Topic changed: humidity with payload: 50
+Topic changed: humidity with payload: 52
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 49
+Topic changed: temperature with payload: 16
+Topic changed: humidity with payload: 50
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 49
+Topic changed: temperature with payload: 16
+Topic changed: humidity with payload: 51
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 50
+Topic changed: temperature with payload: 16
+Topic changed: humidity with payload: 51
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 50
+Topic changed: humidity with payload: 52
+Topic changed: temperature with payload: 16
+Topic changed: humidity with payload: 51
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 50
+Topic changed: temperature with payload: 16
+Topic changed: humidity with payload: 52
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 51
+Topic changed: temperature with payload: 16
+Topic changed: humidity with payload: 52
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 49
+Topic changed: humidity with payload: 51
+Topic changed: thermostat with payload: 2
+Topic changed: humidity with payload: 50
+Topic changed: humidity with payload: 51
+Topic changed: humidity with payload: 52
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 52
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 52
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 52
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 51
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 52
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 52
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 51
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 52
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 52
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 57
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 57
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 53
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 53
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 57
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 58
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 58
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 14
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: thermostat with payload: 3
+Topic changed: thermostat with payload: 4
+Topic changed: thermostat with payload: 6
+Topic changed: thermostat with payload: 7
+Topic changed: thermostat with payload: 8
+Topic changed: thermostat with payload: 9
+Topic changed: thermostat with payload: 10
+Topic changed: thermostat with payload: 9
+Topic changed: thermostat with payload: 8
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 58
+Topic changed: humidity with payload: 56
+Topic changed: thermostat with payload: 9
+Topic changed: thermostat with payload: 10
+Topic changed: thermostat with payload: 9
+Topic changed: thermostat with payload: 8
+Topic changed: thermostat with payload: 7
+Topic changed: thermostat with payload: 6
+Topic changed: thermostat with payload: 5
+Topic changed: thermostat with payload: 4
+Topic changed: thermostat with payload: 3
+Topic changed: humidity with payload: 58
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 58
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: humidity with payload: 56
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: temperature with payload: 15
+Topic changed: temperature with payload: 14
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 53
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 58
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 58
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 54
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 58
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 57
+Topic changed: humidity with payload: 58
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
+Topic changed: humidity with payload: 55
+Topic changed: humidity with payload: 56
