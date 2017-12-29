@@ -7,7 +7,7 @@
 #define DHTTYPE DHT11
 #define FIREBASE_HOST "smarthome-9d4f6.firebaseio.com"
 #define FIREBASE_AUTH "GxpsqcyIH9JNkzrdImy1jstKwFfIj76YaD61r2IO"
-#define WIFI_SSID "schoun-2.4Ghz"
+#define WIFI_@SID "schoun-2.4Ghz"
 #define WIFI_PASSWORD "Azerty123"
 
 DHT dht(D2, DHTTYPE);

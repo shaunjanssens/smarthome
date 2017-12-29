@@ -10,7 +10,7 @@ type PropTypes = {
 };
 
 type StateTypes = {
-  lastvalue: number
+  value: number
 };
 
 const Container = styled.div`
@@ -51,7 +51,7 @@ const Value = styled.div``;
 
 export default class Sensor extends Component<StateTypes, PropTypes> {
   state = {
-    lastvalue: 0
+    value: 0
   };
 
   componentWillMount() {
@@ -60,7 +60,7 @@ export default class Sensor extends Component<StateTypes, PropTypes> {
       .child(this.props.sensor.platform)
       .on("value", function(snapshot) {
         const sensor = snapshot.val();
-        that.setState({ lastvalue: sensor.lastvalue });
+        that.setState({ value: sensor.value });
       });
   }
 
@@ -103,7 +103,7 @@ export default class Sensor extends Component<StateTypes, PropTypes> {
 
   render() {
     const { sensor } = this.props;
-    const { lastvalue } = this.state;
+    const { value } = this.state;
 
     const { icon, prefix, sufix } = this.getSensorMeta(sensor.platform);
 
@@ -115,7 +115,7 @@ export default class Sensor extends Component<StateTypes, PropTypes> {
         <Content>
           <Value>
             {prefix}
-            {lastvalue}
+            {value}
             {sufix}
           </Value>
         </Content>

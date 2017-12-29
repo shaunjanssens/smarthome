@@ -3,18 +3,18 @@ import React from "react";
 import styled from "styled-components";
 import Output from "../components/output";
 
-const renderOutputTab = (page, devices, topicsRef) => {
+const renderOutputTab = (page, devices, deviceRef) => {
   return devices
     .filter(device => device.platform === page.platform)
     .map(device => {
       return (
-        <Output device={device} topicsRef={topicsRef} key={device.topic} />
+        <Output device={device} deviceRef={deviceRef} key={device.topic} />
       );
     });
 };
 
-const OutputPage = ({ page, devices, topicsRef }) => {
-  return renderOutputTab(page, devices, topicsRef);
+const OutputPage = ({ page, devices, deviceRef }) => {
+  return renderOutputTab(page, devices, deviceRef);
 };
 
 export default OutputPage;

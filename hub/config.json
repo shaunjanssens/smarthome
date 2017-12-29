@@ -69,6 +69,11 @@
       "platform": "blinds",
       "name": "Garage door",
       "topic": "blinds-blinds3"
+    },
+    {
+      "platform": "thermostat",
+      "name": "Thermostat",
+      "topic": "thermostat"
     }
   ],
   "sensors": [

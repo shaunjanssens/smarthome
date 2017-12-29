@@ -26,7 +26,7 @@ type StateTypes = {
   system: SystemType,
   devices: any,
   sensors: any,
-  topicsRef: any,
+  deviceRef: any,
   sensorRef: any,
   automationRef: any,
   user: any
@@ -53,11 +53,11 @@ export default class App extends Component<PropTypes, StateTypes> {
     firebase.auth().onAuthStateChanged(function(user) {
       that.setState({ loading: false });
       if (user) {
-        const topicsRef = firebase.database().ref("topics");
+        const deviceRef = firebase.database().ref("devices");
         const sensorRef = firebase.database().ref("sensors");
         const automationRef = firebase.database().ref("automations");
 
-        topicsRef.once("value").then(function(snapshot) {
+        deviceRef.once("value").then(function(snapshot) {
           that.setState({ devices: snapshotToArray(snapshot) });
         });
 
@@ -65,7 +65,7 @@ export default class App extends Component<PropTypes, StateTypes> {
           that.setState({ sensors: snapshotToArray(snapshot) });
         });
 
-        that.setState({ topicsRef, sensorRef, automationRef, user });
+        that.setState({ deviceRef, sensorRef, automationRef, user });
       }
     });
   }
@@ -127,7 +127,7 @@ export default class App extends Component<PropTypes, StateTypes> {
       devices,
       sensors,
       currentpage,
-      topicsRef,
+      deviceRef,
       sensorRef,
       automationRef,
       user
@@ -142,7 +142,7 @@ export default class App extends Component<PropTypes, StateTypes> {
               page={currentpage}
               devices={devices}
               sensors={sensors}
-              topicsRef={topicsRef}
+              deviceRef={deviceRef}
               sensorRef={sensorRef}
               automationRef={automationRef}
               changeTab={this.changeTab}

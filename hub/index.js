@@ -16,17 +16,16 @@ firebase.initializeApp({
   databaseURL: config.firebase.database_url
 });
 
+// Initialize refs
+const deviceRef = firebase.database().ref("/devices");
+const sensorRef = firebase.database().ref("/sensors");
+const automationRef = firebase.database().ref("/automations");
+
 // Initialize MQTT client
 const client = mqtt.connect(config.mqtt.host, {
   username: config.mqtt.username,
   password: config.mqtt.password,
   port: config.mqtt.port
-});
-
-// Say hello on succesful connect
-client.on("connect", () => {
-  client.subscribe("hub");
-  client.publish("hub", "Hub online at " + Date.now());
 });
 
 // Log every message
@@ -35,10 +34,21 @@ client.on("message", (topic, message) => {
 });
 
 // Save automations and changes
-const automationsRef = firebase.database().ref("/automations");
 let automations = null;
-automationsRef.on("value", snapshot => {
+automationRef.on("value", snapshot => {
   automations = snapshotToArray(snapshot);
+});
+
+// Thermostat
+let thermostatStatus = "0";
+let thermostatValue = "0";
+deviceRef.child("thermostat").once("value", snapshot => {
+  thermostatStatus = snapshot.val()["value"].toString();
+  console.log("thermostatStatus", thermostatStatus);
+});
+sensorRef.child("thermostat").once("value", snapshot => {
+  thermostatValue = snapshot.val()["value"].toString();
+  console.log("thermostatValue", thermostatValue);
 });
 
 // Register all topics in firebase
@@ -55,9 +65,8 @@ function snapshotToArray(snapshot) {
 }
 
 function registerFirebaseTopics() {
-  let topicsRef = firebase.database().ref("/topics");
-  topicsRef.once("value", topicsSnapshot => {
-    let topics = snapshotToArray(topicsSnapshot);
+  deviceRef.once("value", topicSnapshot => {
+    let topics = snapshotToArray(topicSnapshot);
 
     config.devices.map(device => {
       const foundTopic = topics.find(topic => {
@@ -67,12 +76,12 @@ function registerFirebaseTopics() {
       if (!foundTopic) {
         firebase
           .database()
-          .ref("topics/" + device.topic)
+          .ref("devices/" + device.topic)
           .set({
             topic: device.topic,
             name: device.name,
             platform: device.platform,
-            lastvalue: 0
+            value: 0
           });
 
         writeLog("Topic created: " + device.name + "(" + device.topic + ")");
@@ -83,32 +92,45 @@ function registerFirebaseTopics() {
 
 // Listen to changes in Firebase
 function firebaseListener() {
-  let topics = firebase.database().ref("/topics");
-  let sensors = firebase.database().ref("/sensors");
-
-  topics.on("child_changed", snapshot => {
-    const value = snapshot.val()["lastvalue"].toString();
+  deviceRef.on("child_changed", snapshot => {
     const name = snapshot.val()["name"].toString();
+    const value = snapshot.val()["value"].toString();
     const topic = snapshot.val()["topic"].toString();
 
-    writeLog("Topic changed: " + name + " with payload: " + value);
+    writeLog("Device changed: " + name + " with payload: " + value);
 
     client.publish(topic, value);
+
+    if (topic === "thermostat") {
+      thermostatStatus = value;
+      console.log("thermostat status:", thermostatStatus);
+    }
   });
 
-  sensors.on("child_changed", snapshot => {
-    const value = snapshot.val()["lastvalue"].toString();
-    const topic = snapshot.key.toString();
+  sensorRef.on("child_changed", snapshot => {
+    const value = snapshot.val()["value"].toString();
+    const topic = snapshot.val()["topic"].toString();
 
-    writeLog("Topic changed: " + topic + " with payload: " + value);
+    writeLog("Sensor changed: " + topic + " with payload: " + value);
 
     checkAutomation(topic, value);
+
+    if (topic === "thermostat") {
+      thermostatValue = value;
+      console.log("thermostat value:", thermostatValue);
+    }
+
+    if (topic === "temperature") {
+      turnThermostatOnOff(checkThermostat(value));
+    }
 
     client.publish(topic, value);
   });
 }
 
-// Automation
+/**
+ * Automations
+ */
 function checkTimeBasedAutomation() {
   automations.map(automation => {
     const date = new Date();
@@ -150,7 +172,7 @@ function triggerIftttAction(automation, topic, value) {
   ) {
     console.log("Automation is fired more than 1 hour ago thus lets go!");
     // Update last triggered
-    automationsRef.child(automation.key).update({ lastfired: Date.now() });
+    automationRef.child(automation.key).update({ lastfired: Date.now() });
 
     let postData = querystring.stringify({
       value1: value
@@ -184,6 +206,42 @@ function triggerIftttAction(automation, topic, value) {
     req.end();
   } else {
     console.log("Automation is fired less than 1 hour ago");
+  }
+}
+
+/**
+ * Thermostat
+ */
+function checkThermostat(currentTemp) {
+  let returnValue;
+  if (currentTemp < thermostatValue) {
+    if (thermostatStatus === "0") {
+      returnValue = "1";
+    }
+  } else if (currentTemp >= thermostatValue) {
+    if (thermostatStatus === "0") {
+      returnValue = "0";
+    } else if (
+      thermostatStatus === "1" &&
+      parseInt(currentTemp) - 3 >= thermostatValue
+    ) {
+      returnValue = "0";
+    } else {
+      if (thermostatStatus === "0") {
+        returnValue = "1";
+      }
+    }
+  }
+
+  return returnValue;
+}
+
+function turnThermostatOnOff(value) {
+  if (value) {
+    writeLog("Thermostat: " + value);
+    deviceRef.child("thermostat").update({
+      value: value.toString()
+    });
   }
 }
 

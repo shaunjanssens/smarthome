@@ -37,13 +37,30 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
     weather: null
   };
 
+  steps = 14;
+  startValue = 14;
+
   componentDidMount() {
     this.getWeather();
 
     this.props.sensorRef.child("thermostat").once("value", snapshot => {
-      this.setState({ thermostat: snapshot.val().lastvalue });
+      if (snapshot.val() && snapshot.val().value) {
+        this.setState({ thermostat: snapshot.val().value });
+      } else {
+        this.createThermostatInFirebase();
+      }
     });
   }
+
+  createThermostatInFirebase = () => {
+    this.props.sensorRef.child("thermostat").set({
+      platform: "thermostat",
+      topic: "thermostat",
+      value: this.startValue
+    });
+
+    this.setState({ thermostat: this.startValue });
+  };
 
   getWeather = () => {
     this.fetchWeather("Ghent,BE").then(weather => {
@@ -82,10 +99,11 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
   };
 
   changeStep = step => {
+    const thermostat = step + this.startValue;
     this.props.sensorRef.child("thermostat").update({
-      lastvalue: step
+      value: thermostat
     });
-    this.setState({ thermostat: step });
+    this.setState({ thermostat });
   };
 
   render() {
@@ -101,9 +119,11 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
         <SliderContainer>
           <SliderLabel>Control inside temperature</SliderLabel>
           <Slider
-            step={thermostat}
+            step={thermostat - this.startValue}
             sensorRef={sensorRef}
             changeStep={this.changeStep}
+            steps={this.steps}
+            startValue={this.startValue}
           />
         </SliderContainer>
       </div>

@@ -13,7 +13,7 @@ type PropTypes = {
   page: PageType,
   devices: Array<DeviceType>,
   sensors: Array<DeviceType>,
-  topicsRef: any,
+  deviceRef: any,
   sensorRef: any,
   automationRef: any,
   changeTab: Function
@@ -33,7 +33,7 @@ const Tab = ({
   page,
   devices,
   sensors,
-  topicsRef,
+  deviceRef,
   sensorRef,
   automationRef,
   changeTab
@@ -51,7 +51,7 @@ const Tab = ({
       output = <AccountPage />;
     } else {
       output = (
-        <OutputPage page={page} devices={devices} topicsRef={topicsRef} />
+        <OutputPage page={page} devices={devices} deviceRef={deviceRef} />
       );
     }
 

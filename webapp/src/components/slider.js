@@ -3,7 +3,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 type PropTypes = {
-  changeStep: Function
+  changeStep: Function,
+  steps: number,
+  startValue: number
 };
 
 type StateTypes = {
@@ -62,11 +64,8 @@ const Tooltip = styled.div`
 export default class Slider extends Component<PropTypes, StateTypes> {
   state = { knobX: 0, step: 0, active: false };
 
-  steps = 14;
-  startValue = 14;
-
   componentWillReceiveProps(nextProps) {
-    let oneStep = this.slider.getBoundingClientRect().width / this.steps;
+    let oneStep = this.slider.getBoundingClientRect().width / nextProps.steps;
 
     this.setState({
       knobX: oneStep * nextProps.step,
@@ -105,7 +104,11 @@ export default class Slider extends Component<PropTypes, StateTypes> {
     let mouseX = e.clientX - slider.left;
 
     if (mouseX > 0 && mouseX < slider.width) {
-      let { step, knobX } = this.getClosest(mouseX, slider.width, this.steps);
+      let { step, knobX } = this.getClosest(
+        mouseX,
+        slider.width,
+        this.props.steps
+      );
       this.setState({ knobX: knobX, step: step });
       this.props.changeStep(step);
     }
@@ -133,7 +136,7 @@ export default class Slider extends Component<PropTypes, StateTypes> {
           onTouchStart={this.handleStart}
         />
         <Tooltip left={this.state.knobX}>
-          {this.startValue + this.state.step}
+          {this.props.startValue + this.state.step}
         </Tooltip>
       </Track>
     );

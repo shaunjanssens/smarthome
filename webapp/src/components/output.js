@@ -7,11 +7,11 @@ import type { DeviceType } from "../types";
 
 type PropTypes = {
   device: DeviceType,
-  topicsRef: any
+  deviceRef: any
 };
 
 type StateTypes = {
-  lastvalue: number
+  value: number
 };
 
 const OutputContainer = styled.div`
@@ -45,51 +45,45 @@ const OutputName = styled.div`
 
 export default class Output extends Component<StateTypes, PropTypes> {
   state = {
-    lastvalue: 0
+    value: 0
   };
 
   componentWillMount() {
     const that = this;
-    this.props.topicsRef
+    this.props.deviceRef
       .child(this.props.device.topic)
       .on("value", function(snapshot) {
         const device = snapshot.val();
-        that.setState({ lastvalue: device.lastvalue });
+        that.setState({ value: device.value });
       });
   }
 
   changeDeviceStatus = status => {
-    this.props.topicsRef.child(this.props.device.topic).update({
-      lastvalue: status === 1 ? 0 : 1
+    this.props.deviceRef.child(this.props.device.topic).update({
+      value: status === 1 ? 0 : 1
     });
   };
 
   render() {
     const { device } = this.props;
-    const { lastvalue } = this.state;
+    const { value } = this.state;
 
     if (device) {
       if (device.platform === "lights") {
         return (
-          <OutputContainer status={lastvalue}>
+          <OutputContainer status={value}>
             <OutputContent>
               <OutputName>{device.name}</OutputName>
-              <Toggle
-                value={lastvalue}
-                statusChange={this.changeDeviceStatus}
-              />
+              <Toggle value={value} statusChange={this.changeDeviceStatus} />
             </OutputContent>
           </OutputContainer>
         );
       } else if (device.platform === "blinds") {
         return (
-          <OutputContainer status={lastvalue}>
+          <OutputContainer status={value}>
             <OutputContent>
               <OutputName>{device.name}</OutputName>
-              <UpAndDown
-                value={lastvalue}
-                statusChange={this.changeDeviceStatus}
-              />
+              <UpAndDown value={value} statusChange={this.changeDeviceStatus} />
             </OutputContent>
           </OutputContainer>
         );
