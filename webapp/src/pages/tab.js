@@ -2,9 +2,10 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../components/header";
-import Thermostat from "./thermostat";
-import Output from "../components/output";
-import Sensor from "../components/sensor";
+import ThermostatPage from "./thermostat";
+import AccountPage from "./account";
+import AddPage from "./add";
+import OutputPage from "./output";
 
 import type { DeviceType, PageType } from "../types";
 
@@ -14,6 +15,7 @@ type PropTypes = {
   sensors: Array<DeviceType>,
   topicsRef: any,
   sensorRef: any,
+  automationRef: any,
   changeTab: Function
 };
 
@@ -27,35 +29,36 @@ const DevicesContainer = styled.div`
   }
 `;
 
-const renderOutputTab = (page, devices, topicsRef) => {
-  return devices
-    .filter(device => device.platform === page.platform)
-    .map(device => {
-      return (
-        <Output device={device} topicsRef={topicsRef} key={device.topic} />
-      );
-    });
-};
-
 const Tab = ({
   page,
   devices,
   sensors,
   topicsRef,
   sensorRef,
+  automationRef,
   changeTab
 }: PropTypes) => {
   if (devices && sensors) {
+    let output;
+
+    if (page.platform === "thermostat") {
+      output = (
+        <ThermostatPage page={page} sensors={sensors} sensorRef={sensorRef} />
+      );
+    } else if (page.platform === "add") {
+      output = <AddPage automationRef={automationRef} />;
+    } else if (page.platform === "account") {
+      output = <AccountPage />;
+    } else {
+      output = (
+        <OutputPage page={page} devices={devices} topicsRef={topicsRef} />
+      );
+    }
+
     return (
       <div>
         <Header page={page} changeTab={changeTab} />
-        <DevicesContainer>
-          {page.platform === "thermostat" ? (
-            <Thermostat page={page} sensors={sensors} sensorRef={sensorRef} />
-          ) : (
-            renderOutputTab(page, devices, topicsRef)
-          )}
-        </DevicesContainer>
+        <DevicesContainer>{output}</DevicesContainer>
       </div>
     );
   } else {

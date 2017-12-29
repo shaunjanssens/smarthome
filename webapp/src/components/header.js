@@ -47,25 +47,37 @@ const Header = ({ page, changeTab }: PropTypes) => {
   return (
     <Container>
       <Icons>
-        <Icon icon="profile">
+        <Icon
+          icon="profile"
+          onClick={() => {
+            changeTab("account");
+          }}
+        >
           <IconProfile />
         </Icon>
-        <Icon icon="add">
+        <Icon
+          icon="add"
+          onClick={() => {
+            changeTab("add");
+          }}
+        >
           <IconAdd />
         </Icon>
       </Icons>
       <Content>
         <Title>{page.title}</Title>
-        <Next
-          onClick={() => {
-            changeTab(page.next);
-          }}
-        >
-          {page.next}
-          <Icon icon="next">
-            <IconArrow />
-          </Icon>
-        </Next>
+        {page.next && (
+          <Next
+            onClick={() => {
+              changeTab(page.next);
+            }}
+          >
+            {page.next}
+            <Icon icon="next">
+              <IconArrow />
+            </Icon>
+          </Next>
+        )}
       </Content>
     </Container>
   );

@@ -7,7 +7,32 @@ import { snapshotToArray } from "./helpers/firebase";
 import Tab from "./pages/tab";
 import Login from "./pages/login";
 
-export default class App extends Component {
+type PageType = {
+  title: string,
+  platform: string,
+  next?: string
+};
+
+type SystemType = {
+  name: string,
+  description: string
+};
+
+type PropTypes = {};
+
+type StateTypes = {
+  loading: boolean,
+  currentpage: PageType,
+  system: SystemType,
+  devices: any,
+  sensors: any,
+  topicsRef: any,
+  sensorRef: any,
+  automationRef: any,
+  user: any
+};
+
+export default class App extends Component<PropTypes, StateTypes> {
   state = {
     loading: true,
     currentpage: {
@@ -30,9 +55,7 @@ export default class App extends Component {
       if (user) {
         const topicsRef = firebase.database().ref("topics");
         const sensorRef = firebase.database().ref("sensors");
-
-        let devices = null;
-        let sensors = null;
+        const automationRef = firebase.database().ref("automations");
 
         topicsRef.once("value").then(function(snapshot) {
           that.setState({ devices: snapshotToArray(snapshot) });
@@ -42,7 +65,7 @@ export default class App extends Component {
           that.setState({ sensors: snapshotToArray(snapshot) });
         });
 
-        that.setState({ topicsRef, sensorRef, user });
+        that.setState({ topicsRef, sensorRef, automationRef, user });
       }
     });
   }
@@ -72,6 +95,20 @@ export default class App extends Component {
           next: "lights"
         };
         break;
+      case "add":
+        page = {
+          title: "Automations",
+          platform: "add",
+          next: null
+        };
+        break;
+      case "account":
+        page = {
+          title: "Account",
+          platform: "account",
+          next: null
+        };
+        break;
       default:
         page = {
           title: "Lights",
@@ -92,9 +129,9 @@ export default class App extends Component {
       currentpage,
       topicsRef,
       sensorRef,
+      automationRef,
       user
     } = this.state;
-
     return (
       <Wrapper>
         <Content>
@@ -107,6 +144,7 @@ export default class App extends Component {
               sensors={sensors}
               topicsRef={topicsRef}
               sensorRef={sensorRef}
+              automationRef={automationRef}
               changeTab={this.changeTab}
             />
           ) : (

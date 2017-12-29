@@ -21,10 +21,6 @@ export const Content = props => {
   return <ContentContent>{props.children}</ContentContent>;
 };
 
-type ButtonTypes = {
-  value: string
-};
-
 const ButtonContainer = styled.div`
   height: 50px;
   color: #fff;

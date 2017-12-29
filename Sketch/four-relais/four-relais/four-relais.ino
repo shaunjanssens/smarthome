@@ -8,6 +8,9 @@
 
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
+#include <DNSServer.h>
+#include <ESP8266WebServer.h>
+#include <WiFiManager.h>
 
 // Define output pins
 #define RELAIS1 D0
@@ -78,7 +81,10 @@ void reconnect() {
  */
 void setup() {
   Serial.begin(115200);
-  setup_wifi();
+  // setup_wifi();
+  WiFiManager wifiManager;
+  wifiManager.autoConnect("smarthome");
+  Serial.println("connected...yeey :)");
   client.setServer(mqttServer, mqttPort);
   client.setCallback(callback);
   pinMode(RELAIS1, OUTPUT);

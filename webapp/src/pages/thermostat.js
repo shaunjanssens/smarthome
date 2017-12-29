@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from "react";
 import styled from "styled-components";
-import Header from "../components/header";
 import Sensor from "../components/sensor";
 import Weather from "../components/weather";
 import Slider from "../components/slider";

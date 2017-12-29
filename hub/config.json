@@ -26,6 +26,9 @@
     "username": "xuepegwq",
     "password": "hfAFTh1heVSy"
   },
+  "ifttt": {
+    "apikey": "nPEfrtJodonXqmMpJxX7iPtbDBm_s7KY9fR9m_M_RU7"
+  },
   "devices": [
     {
       "platform": "lights",
@@ -46,6 +49,11 @@
       "platform": "lights",
       "name": "Christmas lights",
       "topic": "outlet-outlet4"
+    },
+    {
+      "platform": "lights",
+      "name": "Bedroom",
+      "topic": "light-light1"
     },
     {
       "platform": "blinds",
@@ -73,21 +81,6 @@
       "platform": "humidity",
       "name": "Humidity",
       "topic": "humidity"
-    }
-  ],
-  "scenarios": [
-    {
-      "if": {
-        "topic": "temperature",
-        "morethan": "25"
-      },
-      "then": {
-        "post":
-          "https://maker.ifttt.com/trigger/climate/with/key/nPEfrtJodonXqmMpJxX7iPtbDBm_s7KY9fR9m_M_RU7",
-        "data": {
-          "value1": "25"
-        }
-      }
     }
   ]
 }

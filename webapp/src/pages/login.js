@@ -1,11 +1,19 @@
 // @flow
 import React, { Component } from "react";
 import styled from "styled-components";
+import * as firebase from "firebase";
 import { Button } from "../components/common";
 import type { SystemType } from "../types";
 
 type PropTypes = {
-  system: SystemType
+  system: SystemType,
+  handleLogin: Function
+};
+
+type StateTypes = {
+  username: string,
+  password: string,
+  error?: string
 };
 
 const Container = styled.div`
@@ -30,23 +38,64 @@ const Input = styled.input`
   }
 `;
 
-const Login = ({ system }: PropTypes) => {
-  return (
-    <Container>
-      <Title>{system.name}</Title>
-      <p>{system.description}</p>
-      <Form>
-        <Input type="text" placeholder="username" />
-        <Input type="password" placeholder="password" />
-        <Button
-          value="sign in"
-          onClick={() => {
-            console.log("clicked");
-          }}
-        />
-      </Form>
-    </Container>
-  );
-};
+export default class Login extends Component<PropTypes, StateTypes> {
+  state = {
+    username: "",
+    password: "",
+    error: false
+  };
 
-export default Login;
+  handleChange = (e: any) => {
+    const { value, name } = e.target;
+    this.setState({
+      [name]: value,
+      error: false
+    });
+  };
+
+  handleLogin = (username, password) => {
+    const that = this;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(username, password)
+      .catch(function(error) {
+        that.setState({ error: error.message });
+        console.error(error.code, error.message);
+      });
+  };
+
+  render() {
+    const { system } = this.props;
+    const { username, password, error } = this.state;
+
+    return (
+      <Container>
+        <Title>{system.name}</Title>
+        <p>{system.description}</p>
+        <Form>
+          <p>{error ? error : null}</p>
+          <Input
+            type="emaim"
+            name="username"
+            placeholder="email"
+            value={username}
+            onChange={this.handleChange}
+          />
+          <Input
+            type="password"
+            name="password"
+            placeholder="password"
+            password={password}
+            onChange={this.handleChange}
+          />
+          <Button
+            value="sign in"
+            onClick={() => {
+              this.handleLogin(username, password);
+            }}
+          />
+        </Form>
+      </Container>
+    );
+  }
+}

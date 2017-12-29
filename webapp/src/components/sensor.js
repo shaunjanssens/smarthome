@@ -65,33 +65,40 @@ export default class Sensor extends Component<StateTypes, PropTypes> {
   }
 
   getIcon = platform => {
+    let icon;
     switch (platform) {
       case "temperature":
-        return <IconTemperature />;
+        icon = <IconTemperature />;
         break;
       case "humidity":
-        return <IconHumidity />;
+        icon = <IconHumidity />;
         break;
       case "wind":
-        return <IconWind />;
+        icon = <IconWind />;
         break;
       default:
     }
+
+    return icon;
   };
 
   getSensorMeta = platform => {
+    let meta = { icon: null, prefix: null, sufix: null };
+
     switch (platform) {
       case "temperature":
-        return { icon: <IconTemperature />, prefix: null, sufix: "°" };
+        meta = { icon: <IconTemperature />, prefix: null, sufix: "°" };
         break;
       case "humidity":
-        return { icon: <IconHumidity />, prefix: null, sufix: "%" };
+        meta = { icon: <IconHumidity />, prefix: null, sufix: "%" };
         break;
       case "wind":
-        return { icon: <IconHumidity />, prefix: null, sufix: " km/h" };
+        meta = { icon: <IconHumidity />, prefix: null, sufix: " km/h" };
         break;
       default:
     }
+
+    return meta;
   };
 
   render() {
