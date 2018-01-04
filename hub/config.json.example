@@ -1,0 +1,63 @@
+{
+  "system": {
+    "name": "Smart Home",
+    "description":
+      "With Smart Home you can turn on your lights, close your blinds and control the inside temperature."
+  },
+  "firebase": {
+    "type": "",
+    "project_id": "",
+    "private_key_id": "",
+    "private_key": "",
+    "client_email": "",
+    "client_id": "",
+    "auth_uri": "",
+    "token_uri": "",
+    "auth_provider_x509_cert_url": "",
+    "client_x509_cert_url": "",
+    "database_url": ""
+  },
+  "mqtt": {
+    "host": "",
+    "port": ,
+    "username": "",
+    "password": ""
+  },
+  "ifttt": {
+    "apikey": ""
+  },
+  "devices": [
+    {
+      "platform": "lights",
+      "name": "Living room",
+      "topic": "outlet-outlet1"
+    },
+    {
+      "platform": "lights",
+      "name": "Bedroom",
+      "topic": "light-light1"
+    },
+    {
+      "platform": "blinds",
+      "name": "Living room",
+      "topic": "blinds-blinds1"
+    },
+    {
+      "platform": "thermostat",
+      "name": "Thermostat",
+      "topic": "thermostat"
+    }
+  ],
+  "sensors": [
+    {
+      "platform": "temperature",
+      "name": "Temperature",
+      "topic": "temperature"
+    },
+    {
+      "platform": "humidity",
+      "name": "Humidity",
+      "topic": "humidity"
+    }
+  ]
+}

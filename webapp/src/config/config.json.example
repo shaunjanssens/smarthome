@@ -1,0 +1,15 @@
+{
+  "system": {
+    "name": "Smart Home",
+    "description":
+      "With Smart Home you can turn on your lights, close your blinds and control the inside temperature."
+  },
+  "firebase": {
+    "apiKey": "",
+    "authDomain": "",
+    "databaseURL": ",
+    "projectId": "",
+    "storageBucket": "",
+    "messagingSenderId": ""
+  }
+}
