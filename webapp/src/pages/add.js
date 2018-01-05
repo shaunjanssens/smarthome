@@ -9,7 +9,10 @@ type PropTypes = {
 };
 
 type StateTypes = {
-  automations?: Array<any>
+  automations?: Array<any>,
+  platform: string,
+  condition: string,
+  devicevalue?: string
 };
 
 const Automations = styled.div``;
@@ -85,6 +88,8 @@ export default class Add extends Component<PropTypes, StateTypes> {
     automations: null,
     when: "",
     condition: "morethan",
+    platform: "default",
+    devicevalue: "default",
     value: "",
     event: "",
     error: false
@@ -115,10 +120,13 @@ export default class Add extends Component<PropTypes, StateTypes> {
 
     let event;
     if (automation.then.platform === "ifttt") {
-      event = automation.then.event + " event";
+      event = "trigger " + automation.then.event + " event";
+    } else if (automation.then.platform === "output") {
+      let status = automation.then.value === "1" ? "on" : "off";
+      event = "turn " + automation.then.event + " " + status;
     }
 
-    return `When ${trigger} is ${condition} ${value} then trigger ${event}.`;
+    return `When ${trigger} is ${condition} ${value} then ${event}.`;
   };
 
   handleChange = (e: any) => {
@@ -130,35 +138,50 @@ export default class Add extends Component<PropTypes, StateTypes> {
   };
 
   handleForm = () => {
-    const { when, condition, value, event } = this.state;
+    const { when, condition, value, event, platform, devicevalue } = this.state;
 
-    if (when && condition && value && event) {
-      const randomString =
-        Math.random()
-          .toString(36)
-          .substring(2, 15) +
-        Math.random()
-          .toString(36)
-          .substring(2, 15);
-
-      this.props.automationRef.child(randomString).set({
-        key: randomString,
+    if (when && condition && value && event && platform) {
+      const postkey = this.props.automationRef.push().key;
+      this.props.automationRef.child(postkey).set({
+        key: postkey,
         if: {
           [condition]: value,
           topic: when
         },
         then: {
           event: event,
-          platform: "ifttt"
+          platform: platform,
+          value: devicevalue
         }
+      });
+
+      this.setState({
+        when: "",
+        condition: "morethan",
+        value: "",
+        event: "",
+        platform: "default",
+        devicevalue: "default"
       });
     } else {
       this.setState({ error: true });
     }
   };
 
+  handleDelete = key => {
+    this.props.automationRef.child(key).remove();
+  };
+
   render() {
-    const { automations } = this.state;
+    const {
+      automations,
+      when,
+      condition,
+      value,
+      event,
+      platform,
+      devicevalue
+    } = this.state;
 
     if (automations) {
       return (
@@ -182,7 +205,13 @@ export default class Add extends Component<PropTypes, StateTypes> {
                       ? `Last fired on ${date} at ${time}`
                       : `Never fired`}
                   </LastFired>
-                  <Delete>Delete this automation</Delete>
+                  <Delete
+                    onClick={() => {
+                      this.handleDelete(automation.key);
+                    }}
+                  >
+                    Delete this automation
+                  </Delete>
                 </Automation>
               );
             })}
@@ -192,11 +221,12 @@ export default class Add extends Component<PropTypes, StateTypes> {
               type="text"
               name="when"
               placeholder="when sensor"
+              value={when}
               onChange={this.handleChange}
             />
             <Select
               name="condition"
-              defaultValue="morethan"
+              value={condition}
               onChange={this.handleChange}
             >
               <option value="morethan">more than</option>
@@ -207,14 +237,51 @@ export default class Add extends Component<PropTypes, StateTypes> {
               type="text"
               name="value"
               placeholder="value"
+              value={value}
               onChange={this.handleChange}
             />
-            <Input
-              type="text"
-              name="event"
-              placeholder="then tigger event"
+            <Select
+              name="platform"
+              value={platform}
               onChange={this.handleChange}
-            />
+            >
+              <option value="default" disabled>
+                then trigger
+              </option>
+              <option value="ifttt">ifttt</option>
+              <option value="output">output</option>
+            </Select>
+            {platform === "ifttt" ? (
+              <Input
+                type="text"
+                name="event"
+                placeholder="with event"
+                value={event}
+                onChange={this.handleChange}
+              />
+            ) : null}
+            {platform === "output" ? (
+              <div>
+                <Input
+                  type="text"
+                  name="event"
+                  placeholder="with device key"
+                  value={event}
+                  onChange={this.handleChange}
+                />
+                <Select
+                  name="devicevalue"
+                  value={devicevalue}
+                  onChange={this.handleChange}
+                >
+                  <option value="default" disabled>
+                    and value
+                  </option>
+                  <option value="1">on</option>
+                  <option value="0">off</option>
+                </Select>
+              </div>
+            ) : null}
             <Button
               onClick={() => {
                 this.handleForm();
