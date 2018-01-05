@@ -70,7 +70,7 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
 
   fetchWeather = location => {
     const api = "6af9fb53041ac3817dbf1cd43c57636a";
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${
       location
     }&appid=${api}&units=metric`;
 

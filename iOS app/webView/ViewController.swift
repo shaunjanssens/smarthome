@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         let request = URLRequest(url: url!)
         
         webview.load(request)
+        webview.scrollView.bounces = false
     }
     
     override var prefersStatusBarHidden: Bool {
