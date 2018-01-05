@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import styled from "styled-components";
-import { IconAdd, IconProfile, IconArrow } from "./svgs";
+import { IconAdd, IconArrow, IconHome } from "./svgs";
 import type { PageType } from "../types";
 
 type PropTypes = {
@@ -47,22 +47,23 @@ const Header = ({ page, changeTab }: PropTypes) => {
   return (
     <Container>
       <Icons>
-        <Icon
-          icon="profile"
-          onClick={() => {
-            changeTab("account");
-          }}
-        >
-          <IconProfile />
-        </Icon>
-        <Icon
-          icon="add"
-          onClick={() => {
-            changeTab("add");
-          }}
-        >
-          <IconAdd />
-        </Icon>
+        {page.next !== null ? (
+          <Icon
+            onClick={() => {
+              changeTab("add");
+            }}
+          >
+            <IconAdd />
+          </Icon>
+        ) : (
+          <Icon
+            onClick={() => {
+              changeTab("lights");
+            }}
+          >
+            <IconHome />
+          </Icon>
+        )}
       </Icons>
       <Content>
         <Title>{page.title}</Title>

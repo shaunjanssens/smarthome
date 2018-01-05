@@ -3,9 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/header";
 import ThermostatPage from "./thermostat";
-import AccountPage from "./account";
 import AddPage from "./add";
 import OutputPage from "./output";
+import Loading from "../components/loading";
 
 import type { DeviceType, PageType } from "../types";
 
@@ -47,8 +47,6 @@ const Tab = ({
       );
     } else if (page.platform === "add") {
       output = <AddPage automationRef={automationRef} />;
-    } else if (page.platform === "account") {
-      output = <AccountPage />;
     } else {
       output = (
         <OutputPage page={page} devices={devices} deviceRef={deviceRef} />
@@ -62,7 +60,7 @@ const Tab = ({
       </div>
     );
   } else {
-    return <h1>Loading</h1>;
+    return <Loading />;
   }
 };
 

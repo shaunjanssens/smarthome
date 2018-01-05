@@ -1,6 +1,6 @@
 import React from "react";
 
-export const IconAdd = () => {
+export const IconAdd = ({ color = "#90969C" }) => {
   return (
     <svg
       width="14px"
@@ -20,7 +20,7 @@ export const IconAdd = () => {
         <g
           id="header"
           transform="translate(-286.000000, 0.000000)"
-          fill="#49535C"
+          fill={color}
         >
           <g id="icon-add" transform="translate(286.000000, 0.000000)">
             <g id="add">
@@ -294,6 +294,130 @@ export const IconTemperature = () => {
           </g>
         </g>
       </g>
+    </svg>
+  );
+};
+
+export const IconHome = ({ color = "#90969C" }) => {
+  return (
+    <svg
+      width="14px"
+      height="14px"
+      viewBox="0 0 14 14"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        id="Symbols"
+        stroke="none"
+        strokeWidth="1"
+        fill="none"
+        fillRule="evenodd"
+      >
+        <g id="icon-add-copy" fill={color} fillRule="nonzero">
+          <path
+            d="M10.6155293,5.64947695 L7.17787695,2.36808152 C7.05847116,2.25410325 6.85972356,2.25222696 6.73835212,2.36808152 L3.30069974,5.64947695 L3.30069974,11.8666207 C3.30069974,12.0363949 3.43725121,12.1712926 3.60569601,12.1712926 L10.3105331,12.1712926 C10.4791476,12.1712926 10.6155293,12.0348864 10.6155293,11.8666207 L10.6155293,5.64947695 Z M12.4442367,7.38800179 L12.4442367,13.0868249 C12.4442367,13.5926895 12.0338542,14 11.5276216,14 L2.38860752,14 C1.88209196,14 1.47199235,13.5911576 1.47199235,13.0868249 L1.47199235,7.38798982 C1.10678275,7.66944797 0.578840712,7.63624934 0.252854082,7.29473955 C-0.0951153487,6.93020014 -0.0826485627,6.35094744 0.28228414,6.0026026 L6.29734544,0.260953149 C6.66142447,-0.086576843 7.25395093,-0.0873916845 7.61888363,0.260953149 L13.6339449,6.0026026 C13.998024,6.35013257 14.0120539,6.92945686 13.663375,7.29473955 C13.3380052,7.6356032 12.8101428,7.6700939 12.4442367,7.38800179 Z"
+            id="Shape"
+          />
+        </g>
+      </g>
+    </svg>
+  );
+};
+
+export const IconLoading = ({ color = "#9096C" }) => {
+  return (
+    <svg viewBox="0 0 135 140" xmlns="http://www.w3.org/2000/svg" fill={color}>
+      <rect y="10" width="15" height="120" rx="6">
+        <animate
+          attributeName="height"
+          begin="0.5s"
+          dur="1s"
+          values="120;110;100;90;80;70;60;50;40;140;120"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="y"
+          begin="0.5s"
+          dur="1s"
+          values="10;15;20;25;30;35;40;45;50;0;10"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+      </rect>
+      <rect x="30" y="10" width="15" height="120" rx="6">
+        <animate
+          attributeName="height"
+          begin="0.25s"
+          dur="1s"
+          values="120;110;100;90;80;70;60;50;40;140;120"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="y"
+          begin="0.25s"
+          dur="1s"
+          values="10;15;20;25;30;35;40;45;50;0;10"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+      </rect>
+      <rect x="60" width="15" height="140" rx="6">
+        <animate
+          attributeName="height"
+          begin="0s"
+          dur="1s"
+          values="120;110;100;90;80;70;60;50;40;140;120"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="y"
+          begin="0s"
+          dur="1s"
+          values="10;15;20;25;30;35;40;45;50;0;10"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+      </rect>
+      <rect x="90" y="10" width="15" height="120" rx="6">
+        <animate
+          attributeName="height"
+          begin="0.25s"
+          dur="1s"
+          values="120;110;100;90;80;70;60;50;40;140;120"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="y"
+          begin="0.25s"
+          dur="1s"
+          values="10;15;20;25;30;35;40;45;50;0;10"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+      </rect>
+      <rect x="120" y="10" width="15" height="120" rx="6">
+        <animate
+          attributeName="height"
+          begin="0.5s"
+          dur="1s"
+          values="120;110;100;90;80;70;60;50;40;140;120"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="y"
+          begin="0.5s"
+          dur="1s"
+          values="10;15;20;25;30;35;40;45;50;0;10"
+          calcMode="linear"
+          repeatCount="indefinite"
+        />
+      </rect>
     </svg>
   );
 };

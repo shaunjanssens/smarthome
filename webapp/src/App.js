@@ -6,6 +6,7 @@ import config from "./config/config";
 import { snapshotToArray } from "./helpers/firebase";
 import Tab from "./pages/tab";
 import Login from "./pages/login";
+import Loading from "./components/loading";
 
 type PageType = {
   title: string,
@@ -102,13 +103,6 @@ export default class App extends Component<PropTypes, StateTypes> {
           next: null
         };
         break;
-      case "account":
-        page = {
-          title: "Account",
-          platform: "account",
-          next: null
-        };
-        break;
       default:
         page = {
           title: "Lights",
@@ -136,7 +130,7 @@ export default class App extends Component<PropTypes, StateTypes> {
       <Wrapper>
         <Content>
           {loading ? (
-            <h1>Loading</h1>
+            <Loading />
           ) : user ? (
             <Tab
               page={currentpage}

@@ -14,6 +14,7 @@ export const Wrapper = props => {
 };
 
 const ContentContent = styled.div`
+  position: relative;
   padding: 30px;
 `;
 
@@ -40,7 +41,7 @@ export const Button = props => {
   return (
     <ButtonContainer
       onClick={() => {
-        props.onClick;
+        props.onClick();
       }}
       {...props}
     >
