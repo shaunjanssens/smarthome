@@ -7,17 +7,17 @@
 #include "DHT.h"
 
 #define DHTTYPE DHT11
-#define FIREBASE_HOST "smarthome-9d4f6.firebaseio.com"
-#define FIREBASE_AUTH "GxpsqcyIH9JNkzrdImy1jstKwFfIj76YaD61r2IO"
+#define FIREBASE_HOST ""
+#define FIREBASE_AUTH ""
 
 #define LEDPIN D0
 #define DHTPIN D1
 
 // MQTT Config
-const char* mqttServer = "m23.cloudmqtt.com";
-const int mqttPort = 19235;
-const char* mqttUser = "xuepegwq";
-const char* mqttPassword = "hfAFTh1heVSy";
+const char* mqttServer = "";
+const int mqttPort = ;
+const char* mqttUser = "";
+const char* mqttPassword = "";
 const char* subscribeTopic = "thermostat";
 const char* publishTopic = "hub";
 
@@ -34,8 +34,10 @@ void setup() {
   Serial.begin(115200);
   delay(10);
 
-  WiFiManager wifiManager;
-  wifiManager.autoConnect("smarthome-thermostat");
+  // Comment setup_wifi() and uncommend WiFiManager for wifi setup popup
+  setup_wifi();
+  // WiFiManager wifiManager;
+  // wifiManager.autoConnect("smarthome-thermostat");
 
   client.setServer(mqttServer, mqttPort);
   client.setCallback(callback);
@@ -74,6 +76,22 @@ void loop() {
   }
   
   client.loop();
+}
+
+/**
+ * Setup wifi connection
+ */
+void setup_wifi() {
+  delay(100);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  randomSeed(micros());
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
 }
 
 /**

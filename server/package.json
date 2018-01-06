@@ -1,0 +1,19 @@
+{
+  "name": "firebase-smarthome",
+  "version": "1.0.0",
+  "description":
+    "With Smartmome you can turn on your lights, close your blinds and control the inside temperature.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["smarthome", "firebase", "mqtt"],
+  "author": "Shaun Janssens <shaunjanssens@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^4.8.1",
+    "firebase-admin": "^5.7.0",
+    "mqtt": "^2.15.0",
+    "node-fetch": "^1.7.3"
+  }
+}

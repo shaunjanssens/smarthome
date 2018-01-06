@@ -1,11 +1,3 @@
-/**
- * NodeMCU
- * Two relais
- * Platform: lights
- * Name: Shaun's room
- * Topic: light-shaunsroom
- */
-
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <DNSServer.h>
@@ -19,72 +11,32 @@
 #define RELAIS4 D3
 
 // Define network
-const char* ssid = "schoun-2.4Ghz";
-const char* password = "Azerty123";
+const char* ssid = "";
+const char* password = "";
 
 // Define MQTT
-const char* mqttServer = "m23.cloudmqtt.com";
-const int mqttPort = 19235;
-const char* mqttUser = "xuepegwq";
-const char* mqttPassword = "hfAFTh1heVSy";
-const char* subscribeTopic1 = "outlet-outlet1";
-const char* subscribeTopic2 = "outlet-outlet2";
-const char* subscribeTopic3 = "outlet-outlet3";
-const char* subscribeTopic4 = "outlet-outlet4";
+const char* mqttServer = "";
+const int mqttPort = ;
+const char* mqttUser = "";
+const char* mqttPassword = "";
+const char* subscribeTopic1 = "";
+const char* subscribeTopic2 = "";
+const char* subscribeTopic3 = "";
+const char* subscribeTopic4 = "";
 const char* publishTopic = "hub";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
 /**
- * Setup wifi connection
- */
-void setup_wifi() {
-  delay(100);
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  randomSeed(micros());
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-}
-
-/**
- * Reconnect to MQTT
- */
-void reconnect() {
-  while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
-    String clientId = "smarthome-";
-    clientId += String(random(0xffff), HEX);
-    
-    if (client.connect(clientId.c_str(), mqttUser, mqttPassword)) {
-      Serial.println("connected");
-      client.subscribe(subscribeTopic1);
-      client.subscribe(subscribeTopic2);
-      client.subscribe(subscribeTopic3);
-      client.subscribe(subscribeTopic4);
-    } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
-    }
-  }
-}
-
-/**
  * Initial setup
  */
 void setup() {
   Serial.begin(115200);
-  // setup_wifi();
-  WiFiManager wifiManager;
-  wifiManager.autoConnect("smarthome");
-  Serial.println("connected...yeey :)");
+  // Comment setup_wifi() and uncommend WiFiManager for wifi setup popup
+  setup_wifi();
+  // WiFiManager wifiManager;
+  // wifiManager.autoConnect("smarthome-outlet");
   client.setServer(mqttServer, mqttPort);
   client.setCallback(callback);
   pinMode(RELAIS1, OUTPUT);
@@ -143,8 +95,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
       digitalWrite(RELAIS4, HIGH);
     }
   }
-
-  
 }
 
 void loop() {
@@ -153,4 +103,44 @@ void loop() {
   }
   
   client.loop();
+}
+
+/**
+ * Setup wifi connection
+ */
+void setup_wifi() {
+  delay(100);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  randomSeed(micros());
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+/**
+ * Reconnect to MQTT
+ */
+void reconnect() {
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    String clientId = "smarthome-";
+    clientId += String(random(0xffff), HEX);
+    
+    if (client.connect(clientId.c_str(), mqttUser, mqttPassword)) {
+      Serial.println("connected");
+      client.subscribe(subscribeTopic1);
+      client.subscribe(subscribeTopic2);
+      client.subscribe(subscribeTopic3);
+      client.subscribe(subscribeTopic4);
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+    }
+  }
 }

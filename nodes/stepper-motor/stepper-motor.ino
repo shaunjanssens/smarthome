@@ -1,6 +1,9 @@
-#include <AccelStepper.h>
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
+#include <DNSServer.h>
+#include <ESP8266WebServer.h>
+#include <WiFiManager.h>
+#include <AccelStepper.h>
 
 // Define stepper motor
 #define HALFSTEP 8
@@ -14,15 +17,15 @@
 #define buttonMax D6
 
 // Define network
-const char* ssid = "schoun-2.4Ghz";
-const char* password = "Azerty123";
+const char* ssid = "";
+const char* password = "";
 
 // Define MQTT
-const char* mqttServer = "m23.cloudmqtt.com";
-const int mqttPort = 19235;
-const char* mqttUser = "xuepegwq";
-const char* mqttPassword = "hfAFTh1heVSy";
-const char* subscribeTopic1 = "blinds-blinds1";
+const char* mqttServer = "";
+const int mqttPort = ;
+const char* mqttUser = "";
+const char* mqttPassword = "";
+const char* subscribeTopic1 = "";
 const char* publishTopic = "hub";
 
 // Initialize with pin sequence IN1-IN3-IN2-IN4 for using the AccelStepper with 28BYJ-48
@@ -37,48 +40,14 @@ int buttonMinState = 0;
 int buttonMaxState = 0;
 
 /**
- * Setup wifi connection
- */
-void setup_wifi() {
-  delay(100);
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  randomSeed(micros());
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-}
-
-/**
- * Reconnect to MQTT
- */
-void reconnect() {
-  while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
-    String clientId = "smarthome-";
-    clientId += String(random(0xffff), HEX);
-    
-    if (client.connect(clientId.c_str(), mqttUser, mqttPassword)) {
-      Serial.println("connected");
-      client.subscribe(subscribeTopic1);
-    } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
-    }
-  }
-}
-
-/**
  * Initial setup
  */
 void setup() {
   Serial.begin(115200);
+  // Comment setup_wifi() and uncommend WiFiManager for wifi setup popup
   setup_wifi();
+  // WiFiManager wifiManager;
+  // wifiManager.autoConnect("smarthome-motor");
   client.setServer(mqttServer, mqttPort);
   client.setCallback(callback);
   pinMode(buttonMin, INPUT);
@@ -134,5 +103,42 @@ void littleUp() {
 
 void littleDown() {
   stepper1.move(-100);
+}
+
+/**
+ * Setup wifi connection
+ */
+void setup_wifi() {
+  delay(100);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  randomSeed(micros());
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+/**
+ * Reconnect to MQTT
+ */
+void reconnect() {
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    String clientId = "smarthome-";
+    clientId += String(random(0xffff), HEX);
+    
+    if (client.connect(clientId.c_str(), mqttUser, mqttPassword)) {
+      Serial.println("connected");
+      client.subscribe(subscribeTopic1);
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+    }
+  }
 }
 
