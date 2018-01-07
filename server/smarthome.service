@@ -1,0 +1,16 @@
+[Unit]
+Description=Smarthome
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/node /home/pi/Smarthome/server/lib/index.js
+Restart=always
+RestartSec=200
+User=pi
+Group=pi
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/home/pi/Smarthome/server/
+
+[Install]
+WantedBy=multi-user.target
