@@ -19,6 +19,7 @@ const Container = styled.div`
   box-shadow: 0 6px 15px 0 rgba(73, 83, 92, 0.08);
   border-radius: 3px;
   padding: 10px 0;
+  height: fit-content;
 `;
 
 const PlatformIcon = styled.div`

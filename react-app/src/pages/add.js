@@ -15,6 +15,16 @@ type StateTypes = {
   devicevalue?: string
 };
 
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
 const Automations = styled.div``;
 
 const Automation = styled.div`
@@ -41,6 +51,7 @@ const Delete = styled.div`
   border-top: 1px solid rgba(181, 183, 196, 0.2);
   margin-top: 15px;
   padding-top: 15px;
+  cursor: pointer;
 `;
 
 const Form = styled.div`
@@ -50,6 +61,7 @@ const Form = styled.div`
   box-shadow: 0 6px 20px 0 rgba(73, 83, 92, 0.08);
   padding: 20px;
   transition: all 0.15s;
+  height: fit-content;
 `;
 const Input = styled.input`
   width: 100%;
@@ -185,7 +197,7 @@ export default class Add extends Component<PropTypes, StateTypes> {
 
     if (automations) {
       return (
-        <div>
+        <Container>
           <Automations>
             {automations.map(automation => {
               const rawDate = new Date(automation.lastfired);
@@ -289,7 +301,7 @@ export default class Add extends Component<PropTypes, StateTypes> {
               value="add automation"
             />
           </Form>
-        </div>
+        </Container>
       );
     } else {
       return <h1>Loading</h1>;

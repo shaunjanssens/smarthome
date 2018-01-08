@@ -11,5 +11,9 @@
     "projectId": "",
     "storageBucket": "",
     "messagingSenderId": ""
+  },
+  "openweathermap": {
+    "location": "",
+    "apiKey": ""
   }
 }

@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import styled from "styled-components";
-import { IconWind, IconHumidity } from "./svgs";
+import { IconWind, IconHumidity, IconLoading } from "./svgs";
 
 type PropTypes = {
   weather: any
@@ -12,10 +12,17 @@ const Container = styled.div`
   box-shadow: 0 6px 15px 0 rgba(73, 83, 92, 0.08);
   border-radius: 3px;
   padding: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  height: fit-content;
 `;
 const Content = styled.div`
   display: flex;
+
+  ${props => {
+    if (props.loading) {
+      return `height: 60px; align-items: center; justify-content: center;`;
+    }
+  }};
 `;
 const Temperature = styled.div`
   display: flex;
@@ -64,6 +71,10 @@ const Icon = styled.div`
     height: 14px;
   }
 `;
+const Loading = styled.div`
+  font-size: 1.6rem;
+  color: #b6b8c4;
+`;
 
 const weather = ({ weather }: PropTypes) => {
   if (weather) {
@@ -92,7 +103,13 @@ const weather = ({ weather }: PropTypes) => {
       </Container>
     );
   } else {
-    return <h1>Loading</h1>;
+    return (
+      <Container>
+        <Content loading>
+          <Loading>Loading weather...</Loading>
+        </Content>
+      </Container>
+    );
   }
 };
 

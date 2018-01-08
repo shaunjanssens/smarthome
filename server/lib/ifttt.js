@@ -21,11 +21,9 @@ let { config, automationRef } = require("./globals.js");
  * Trigger IFTTT.com maker action
  */
 const triggerIftttEvent = (automation, value) => {
-  let date = new Date();
-  if (
-    date.setHours(date.getHours() - 1) >= automation.lastfired ||
-    !automation.lastfired
-  ) {
+  const date = new Date();
+  const hourAgo = date.setHours(date.getHours() - 1);
+  if (hourAgo >= automation.lastfired || !automation.lastfired) {
     // Set postdata
     let postData = querystring.stringify({
       value1: value

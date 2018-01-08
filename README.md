@@ -1,7 +1,7 @@
 # Smart home
 
-With Smart home you can turn on your lights, close your blinds and control the
-inside temperature.
+Turn on your lights, close your blinds, control the inside temperature and
+automate everything.
 
 [Live version](https://smarthome-9d4f6.firebaseapp.com/)
 

@@ -13,6 +13,10 @@
 #define LEDPIN D0
 #define DHTPIN D1
 
+// Define network
+const char* ssid = "";
+const char* password = "";
+
 // MQTT Config
 const char* mqttServer = "";
 const int mqttPort = ;

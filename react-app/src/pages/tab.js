@@ -19,16 +19,6 @@ type PropTypes = {
   changeTab: Function
 };
 
-const DevicesContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 20px;
-
-  @media (min-width: 640px) {
-    grid-template-columns: 1fr 1fr;
-  }
-`;
-
 const Tab = ({
   page,
   devices,
@@ -56,7 +46,7 @@ const Tab = ({
     return (
       <div>
         <Header page={page} changeTab={changeTab} />
-        <DevicesContainer>{output}</DevicesContainer>
+        {output}
       </div>
     );
   } else {

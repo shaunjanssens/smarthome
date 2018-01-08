@@ -15,6 +15,7 @@ const ToggleContainer = styled.div`
   box-shadow: inset 0 1px 3px 0 rgba(73, 83, 92, 0.1);
   border-radius: 100px;
 `;
+
 const ToggleKnob = styled.div`
   position: absolute;
   width: 24px;

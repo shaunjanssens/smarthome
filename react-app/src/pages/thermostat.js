@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Sensor from "../components/sensor";
 import Weather from "../components/weather";
 import Slider from "../components/slider";
+import config from "../config/config";
 
 import type { DeviceType } from "../types";
 
@@ -16,6 +17,15 @@ type StateTypes = {
   weather?: any
 };
 
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 const SensorContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -23,7 +33,7 @@ const SensorContainer = styled.div`
 `;
 
 const SliderContainer = styled.div`
-  padding: 40px 0;
+  padding: 20px 0 0 0;
 `;
 
 const SliderLabel = styled.h3`
@@ -63,16 +73,15 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
   };
 
   getWeather = () => {
-    this.fetchWeather("Ghent,BE").then(weather => {
+    this.fetchWeather().then(weather => {
       this.setState({ weather });
     });
   };
 
-  fetchWeather = location => {
-    const api = "6af9fb53041ac3817dbf1cd43c57636a";
+  fetchWeather = () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${
-      location
-    }&appid=${api}&units=metric`;
+      config.openweathermap.location
+    }&appid=${config.openweathermap.apiKey}&units=metric`;
 
     return fetch(url, {
       accept: "application/json"
@@ -82,6 +91,7 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
         return respons;
       })
       .catch(function(error) {
+        console.error(error);
         return false;
       });
   };
@@ -111,7 +121,7 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
     const { weather, thermostat } = this.state;
 
     return (
-      <div>
+      <Container>
         <Weather weather={weather} />
         <SensorContainer>
           {this.renderThermostatTab(sensors, sensorRef)}
@@ -126,7 +136,7 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
             startValue={this.startValue}
           />
         </SliderContainer>
-      </div>
+      </Container>
     );
   }
 }

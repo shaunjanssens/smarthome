@@ -42,10 +42,6 @@ void setup() {
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.println("Message recieved");
-  Serial.println(topic);
-  Serial.println(subscribeTopic1);
-
   if (strcmp(topic,subscribeTopic1)==0) {
     Serial.println("Topic selected");
     if (((char)payload[0]) == '1') {
