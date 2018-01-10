@@ -17,10 +17,27 @@ type StateTypes = {
 
 const Container = styled.div`
   position: relative;
-  height: 100%;
+  height: calc(100vh - 60px);
 `;
-const Title = styled.h1``;
-const Form = styled.div``;
+const Title = styled.h1`
+  padding-top: 60px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ecedee;
+`;
+const Description = styled.p`
+  font-size: 1.6rem;
+  line-height: 1.8;
+`;
+const Form = styled.div`
+  position: absolute;
+  bottom: 0;
+
+  @media (min-width: 440px) {
+    position: relative;
+    bottom: auto;
+  }
+`;
 const Input = styled.input`
   width: 100%;
   height: 50px;
@@ -70,7 +87,7 @@ export default class Login extends Component<PropTypes, StateTypes> {
     return (
       <Container>
         <Title>{system.name}</Title>
-        <p>{system.description}</p>
+        <Description>{system.description}</Description>
         <Form>
           <p>{error ? error : null}</p>
           <Input

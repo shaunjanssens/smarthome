@@ -8,6 +8,8 @@ import Tab from "./pages/tab";
 import Login from "./pages/login";
 import Loading from "./components/loading";
 
+import type { DeviceType, SensorType, RoomType } from "./types";
+
 type PageType = {
   title: string,
   platform: string,
@@ -24,9 +26,9 @@ type PropTypes = {};
 type StateTypes = {
   loading: boolean,
   system: SystemType,
-  devices: any,
-  sensors: any,
-  rooms: any,
+  devices: Array<DeviceType>,
+  sensors: Array<SensorType>,
+  rooms: Array<RoomType>,
   deviceRef: any,
   sensorRef: any,
   automationRef: any,
@@ -70,7 +72,7 @@ export default class App extends Component<PropTypes, StateTypes> {
           that.setState({ rooms });
         });
 
-        that.setState({ deviceRef, sensorRef, automationRef, roomsRef, user });
+        that.setState({ deviceRef, sensorRef, automationRef, user });
       }
     });
   }
@@ -81,13 +83,13 @@ export default class App extends Component<PropTypes, StateTypes> {
       system,
       devices,
       sensors,
-      rooms,
-      currentpage,
       deviceRef,
       sensorRef,
       automationRef,
+      rooms,
       user
     } = this.state;
+
     return (
       <Wrapper>
         <Content>
@@ -95,7 +97,6 @@ export default class App extends Component<PropTypes, StateTypes> {
             <Loading />
           ) : user ? (
             <Tab
-              page={currentpage}
               devices={devices}
               sensors={sensors}
               rooms={rooms}
