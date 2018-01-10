@@ -28,11 +28,11 @@ const snapshotToArray = snapshot => {
 };
 
 /**
- * Run RF433 script with code
+ * Run python script with argument
  */
-const executeRf433Script = code => {
-  const scriptLocation = "./scripts/testscript.py";
-  exec(`${scriptLocation} ${code}`, (error, stdout, stderr) => {
+const executePythonScript = (scriptName, argument) => {
+  const scriptLocation = `./scripts/${scriptName}.py`;
+  exec(`${scriptLocation} ${argument}`, (error, stdout, stderr) => {
     console.log(`${stdout}`);
     console.log(`${stderr}`);
     if (error !== null) {
@@ -44,5 +44,5 @@ const executeRf433Script = code => {
 module.exports = {
   writeLog,
   snapshotToArray,
-  executeRf433Script
+  executePythonScript
 };

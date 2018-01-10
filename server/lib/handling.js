@@ -10,7 +10,7 @@ let { client, thermostat, setThermostat } = require("./globals.js");
  */
 const { turnThermostatOnOff } = require("./thermostat");
 const { checkEventBasedAutomation } = require("./automations");
-const { writeLog } = require("./helpers");
+const { writeLog, executePythonScript } = require("./helpers");
 
 /**
  * Handle device change
@@ -20,7 +20,9 @@ const handleDevice = device => {
     // Public message to MQTT
     client.publish(device.config.topic.toString(), device.state.toString());
   } else if (device.platform === "rf433") {
-    console.log("to be implemented");
+    let rfCode =
+      device.state === 1 ? device.config.on_code : device.config.off_code;
+    executePythonScript("rfSend", rfCode);
   }
 
   // If device is thermostat
