@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { IconLoading } from "./svgs";
 
 const LoadingContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: calc(100vh - 60px);
   display: flex;

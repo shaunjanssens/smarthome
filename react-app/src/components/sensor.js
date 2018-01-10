@@ -58,43 +58,22 @@ export default class Sensor extends Component<StateTypes, PropTypes> {
   componentWillMount() {
     const that = this;
     this.props.sensorRef
-      .child(this.props.sensor.platform)
+      .child(this.props.sensor.id)
       .on("value", function(snapshot) {
         const sensor = snapshot.val();
         that.setState({ value: sensor.value });
       });
   }
 
-  getIcon = platform => {
-    let icon;
-    switch (platform) {
-      case "temperature":
-        icon = <IconTemperature />;
-        break;
-      case "humidity":
-        icon = <IconHumidity />;
-        break;
-      case "wind":
-        icon = <IconWind />;
-        break;
-      default:
-    }
-
-    return icon;
-  };
-
-  getSensorMeta = platform => {
+  getSensorMeta = type => {
     let meta = { icon: null, prefix: null, sufix: null };
 
-    switch (platform) {
+    switch (type) {
       case "temperature":
         meta = { icon: <IconTemperature />, prefix: null, sufix: "°" };
         break;
       case "humidity":
         meta = { icon: <IconHumidity />, prefix: null, sufix: "%" };
-        break;
-      case "wind":
-        meta = { icon: <IconHumidity />, prefix: null, sufix: " km/h" };
         break;
       default:
     }
@@ -106,7 +85,7 @@ export default class Sensor extends Component<StateTypes, PropTypes> {
     const { sensor } = this.props;
     const { value } = this.state;
 
-    const { icon, prefix, sufix } = this.getSensorMeta(sensor.platform);
+    const { icon, prefix, sufix } = this.getSensorMeta(sensor.type);
 
     return (
       <Container>

@@ -40,23 +40,23 @@ const checkTimeBasedAutomation = () => {
 /**
  * Check if value meets the automation requirements
  */
-const checkEventBasedAutomation = (topic, value) => {
+const checkEventBasedAutomation = (id, value) => {
   const automations = getAutomations();
 
   if (automations) {
     automations.map(automation => {
-      if (topic === automation.if.topic) {
+      if (id == automation.if.id) {
         if (automation.if.morethan) {
           if (value > automation.if.morethan) {
-            triggerAutomation(automation, topic, value);
+            triggerAutomation(automation, id, value);
           }
         } else if (automation.if.lessthan) {
           if (value < automation.if.lessthan) {
-            triggerAutomation(automation, topic, value);
+            triggerAutomation(automation, id, value);
           }
         } else if (automation.if.equals) {
           if (value == automation.if.equals) {
-            triggerAutomation(automation, topic, value);
+            triggerAutomation(automation, id, value);
           }
         }
       }
@@ -67,7 +67,7 @@ const checkEventBasedAutomation = (topic, value) => {
 /**
  * Trigger automation
  */
-const triggerAutomation = (automation, topic, value) => {
+const triggerAutomation = (automation, id, value) => {
   switch (automation.then.platform) {
     case "output":
       triggerDeviceEvent(automation, value);
@@ -85,19 +85,15 @@ const triggerAutomation = (automation, topic, value) => {
  * Trigger device event
  */
 const triggerDeviceEvent = automation => {
-  const value = automation.then.value.toString();
+  const state = automation.then.state.toString();
   const topic = automation.then.event.toString();
 
-  console.log("trigger device automation", automation);
-
   // Set device in firebase
-  deviceRef.child(topic).update({
-    value: value
-  });
+  deviceRef.child(topic).update({ state: state });
 
   // Log action
   writeLog(
-    "Device automation triggered: " + topic + " changed with payload: " + value
+    "Device automation triggered: " + topic + " changed with payload: " + state
   );
 };
 

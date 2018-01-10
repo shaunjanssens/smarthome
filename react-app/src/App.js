@@ -23,24 +23,20 @@ type PropTypes = {};
 
 type StateTypes = {
   loading: boolean,
-  currentpage: PageType,
   system: SystemType,
   devices: any,
   sensors: any,
+  rooms: any,
   deviceRef: any,
   sensorRef: any,
   automationRef: any,
+  roomsRef: any,
   user: any
 };
 
 export default class App extends Component<PropTypes, StateTypes> {
   state = {
-    loading: true,
-    currentpage: {
-      title: "Lights",
-      platform: "lights",
-      next: "blinds"
-    }
+    loading: true
   };
 
   componentWillMount() {
@@ -57,6 +53,7 @@ export default class App extends Component<PropTypes, StateTypes> {
         const deviceRef = firebase.database().ref("devices");
         const sensorRef = firebase.database().ref("sensors");
         const automationRef = firebase.database().ref("automations");
+        const roomsRef = firebase.database().ref("rooms");
 
         deviceRef.once("value").then(function(snapshot) {
           that.setState({ devices: snapshotToArray(snapshot) });
@@ -66,53 +63,17 @@ export default class App extends Component<PropTypes, StateTypes> {
           that.setState({ sensors: snapshotToArray(snapshot) });
         });
 
-        that.setState({ deviceRef, sensorRef, automationRef, user });
+        roomsRef.once("value").then(function(snapshot) {
+          let rooms = snapshotToArray(snapshot).sort((a, b) => {
+            return a.order - b.order;
+          });
+          that.setState({ rooms });
+        });
+
+        that.setState({ deviceRef, sensorRef, automationRef, roomsRef, user });
       }
     });
   }
-
-  changeTab = tab => {
-    let page;
-
-    switch (tab) {
-      case "lights":
-        page = {
-          title: "Lights",
-          platform: "lights",
-          next: "blinds"
-        };
-        break;
-      case "blinds":
-        page = {
-          title: "Blinds",
-          platform: "blinds",
-          next: "thermostat"
-        };
-        break;
-      case "thermostat":
-        page = {
-          title: "Thermostat",
-          platform: "thermostat",
-          next: "lights"
-        };
-        break;
-      case "add":
-        page = {
-          title: "Automations",
-          platform: "add",
-          next: null
-        };
-        break;
-      default:
-        page = {
-          title: "Lights",
-          platform: "lights",
-          next: "blinds"
-        };
-    }
-
-    this.setState({ currentpage: page });
-  };
 
   render() {
     const {
@@ -120,6 +81,7 @@ export default class App extends Component<PropTypes, StateTypes> {
       system,
       devices,
       sensors,
+      rooms,
       currentpage,
       deviceRef,
       sensorRef,
@@ -136,10 +98,10 @@ export default class App extends Component<PropTypes, StateTypes> {
               page={currentpage}
               devices={devices}
               sensors={sensors}
+              rooms={rooms}
               deviceRef={deviceRef}
               sensorRef={sensorRef}
               automationRef={automationRef}
-              changeTab={this.changeTab}
             />
           ) : (
             <Login system={system} />

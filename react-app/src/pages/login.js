@@ -6,8 +6,7 @@ import { Button } from "../components/common";
 import type { SystemType } from "../types";
 
 type PropTypes = {
-  system: SystemType,
-  handleLogin: Function
+  system: SystemType
 };
 
 type StateTypes = {

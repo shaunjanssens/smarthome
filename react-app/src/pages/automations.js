@@ -10,9 +10,10 @@ type PropTypes = {
 
 type StateTypes = {
   automations?: Array<any>,
+  sensors: string,
   platform: string,
   condition: string,
-  devicevalue?: string
+  devicestate?: string
 };
 
 const Container = styled.div`
@@ -95,13 +96,13 @@ const Select = styled.select`
   }
 `;
 
-export default class Add extends Component<PropTypes, StateTypes> {
+export default class AutomationsPage extends Component<PropTypes, StateTypes> {
   state = {
     automations: null,
-    when: "",
+    sensor: "",
     condition: "morethan",
     platform: "default",
-    devicevalue: "default",
+    devicestate: "default",
     value: "",
     event: "",
     error: false
@@ -115,7 +116,7 @@ export default class Add extends Component<PropTypes, StateTypes> {
   }
 
   generateNiceSentence = automation => {
-    const trigger = automation.if.topic;
+    const trigger = automation.if.id;
 
     let value;
     let condition;
@@ -150,30 +151,37 @@ export default class Add extends Component<PropTypes, StateTypes> {
   };
 
   handleForm = () => {
-    const { when, condition, value, event, platform, devicevalue } = this.state;
+    const {
+      sensor,
+      condition,
+      value,
+      event,
+      platform,
+      devicestate
+    } = this.state;
 
-    if (when && condition && value && event && platform) {
+    if (sensor && condition && value && event && platform) {
       const postkey = this.props.automationRef.push().key;
       this.props.automationRef.child(postkey).set({
         key: postkey,
         if: {
           [condition]: value,
-          topic: when
+          id: sensor
         },
         then: {
           event: event,
           platform: platform,
-          value: devicevalue
+          state: devicestate
         }
       });
 
       this.setState({
-        when: "",
+        sensor: "",
         condition: "morethan",
         value: "",
         event: "",
         platform: "default",
-        devicevalue: "default"
+        devicestate: "default"
       });
     } else {
       this.setState({ error: true });
@@ -187,12 +195,12 @@ export default class Add extends Component<PropTypes, StateTypes> {
   render() {
     const {
       automations,
-      when,
+      sensor,
       condition,
       value,
       event,
       platform,
-      devicevalue
+      devicestate
     } = this.state;
 
     if (automations) {
@@ -231,9 +239,9 @@ export default class Add extends Component<PropTypes, StateTypes> {
           <Form>
             <Input
               type="text"
-              name="when"
+              name="sensor"
               placeholder="when sensor"
-              value={when}
+              value={sensor}
               onChange={this.handleChange}
             />
             <Select
@@ -282,8 +290,8 @@ export default class Add extends Component<PropTypes, StateTypes> {
                   onChange={this.handleChange}
                 />
                 <Select
-                  name="devicevalue"
-                  value={devicevalue}
+                  name="devicestate"
+                  value={devicestate}
                   onChange={this.handleChange}
                 >
                   <option value="default" disabled>

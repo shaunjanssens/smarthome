@@ -1,14 +1,31 @@
 // @flow
 export type DeviceType = {
-  platform: string,
+  id: string,
   name: string,
-  topic: string
+  platform: string,
+  state: string,
+  type: string
+};
+
+export type SensorType = {
+  id: string,
+  platform: string,
+  type: string,
+  value: string
+};
+
+export type RoomType = {
+  id: string,
+  name: string,
+  devices: array<string>
 };
 
 export type PageType = {
-  title: string,
-  platform?: string,
-  next?: string
+  index: number,
+  id: string,
+  name: string,
+  next?: string,
+  devices?: Array<string>
 };
 
 export type SystemType = {
