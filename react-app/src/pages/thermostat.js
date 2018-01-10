@@ -9,7 +9,6 @@ import config from "../config/config";
 import type { DeviceType } from "../types";
 
 type PropTypes = {
-  sensors: Array<DeviceType>,
   sensorRef: any
 };
 
@@ -54,23 +53,9 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
     this.getWeather();
 
     this.props.sensorRef.child("thermostat").once("value", snapshot => {
-      if (snapshot.val() && snapshot.val().value) {
-        this.setState({ thermostat: snapshot.val().value });
-      } else {
-        this.createThermostatInFirebase();
-      }
+      this.setState({ thermostat: snapshot.val().value });
     });
   }
-
-  createThermostatInFirebase = () => {
-    this.props.sensorRef.child("thermostat").set({
-      platform: "thermostat",
-      topic: "thermostat",
-      value: this.startValue
-    });
-
-    this.setState({ thermostat: this.startValue });
-  };
 
   getWeather = () => {
     this.fetchWeather().then(weather => {
@@ -98,7 +83,7 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
 
   renderThermostatTab = (sensors, sensorRef) => {
     return sensors.map(sensor => {
-      if (sensor.platform === "thermostat") {
+      if (sensor.type === "thermostat") {
         return null;
       } else {
         return (
@@ -117,26 +102,30 @@ export default class Thermostat extends Component<PropTypes, StateTypes> {
   };
 
   render() {
-    const { sensors, sensorRef } = this.props;
+    const { sensorRef, sensors } = this.props;
     const { weather, thermostat } = this.state;
 
-    return (
-      <Container>
-        <Weather weather={weather} />
-        <SensorContainer>
-          {this.renderThermostatTab(sensors, sensorRef)}
-        </SensorContainer>
-        <SliderContainer>
-          <SliderLabel>Control inside temperature</SliderLabel>
-          <Slider
-            step={thermostat - this.startValue}
-            sensorRef={sensorRef}
-            changeStep={this.changeStep}
-            steps={this.steps}
-            startValue={this.startValue}
-          />
-        </SliderContainer>
-      </Container>
-    );
+    if (sensors) {
+      return (
+        <Container>
+          <Weather weather={weather} />
+          <SensorContainer>
+            {this.renderThermostatTab(sensors, sensorRef)}
+          </SensorContainer>
+          <SliderContainer>
+            <SliderLabel>Control inside temperature</SliderLabel>
+            <Slider
+              step={thermostat - this.startValue}
+              sensorRef={sensorRef}
+              changeStep={this.changeStep}
+              steps={this.steps}
+              startValue={this.startValue}
+            />
+          </SliderContainer>
+        </Container>
+      );
+    } else {
+      return <h1>Loading</h1>;
+    }
   }
 }

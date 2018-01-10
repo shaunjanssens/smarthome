@@ -8,6 +8,7 @@ let {
   deviceRef,
   sensorRef,
   automationRef,
+  roomRef,
   automations,
   setAutomations,
   getAutomations
@@ -17,33 +18,55 @@ let {
  * Import functions
  */
 const { snapshotToArray, writeLog } = require("./helpers");
-const { handleDevice, handleSensor } = require("./devicesandsensors");
+const { handleDevice, handleSensor } = require("./handling");
 
 /**
  * Register new sensors and devices in firebase
  */
-const registerFirebaseTopics = () => {
-  deviceRef.once("value", topicSnapshot => {
-    let topics = snapshotToArray(topicSnapshot);
+const registerFirebaseDevices = () => {
+  /**
+   * Add devices
+   */
+  deviceRef.once("value", snapshot => {
+    const firebaseDevices = snapshotToArray(snapshot);
 
     config.devices.map(device => {
-      const foundTopic = topics.find(topic => {
-        return topic.topic === device.topic;
+      const deviceAlreadyInFirebase = firebaseDevices.find(firebaseDevice => {
+        return firebaseDevice.key === device.id;
       });
 
-      if (!foundTopic) {
-        deviceRef.child(device.topic).set({
-          topic: device.topic,
-          name: device.name,
-          platform: device.platform,
-          value: 0
-        });
-
-        writeLog(
-          "New device: " + device.name + " created with topic: " + device.topic
-        );
+      if (!deviceAlreadyInFirebase) {
+        device.state = 0; // Set device value to 0
+        deviceRef.child(device.id).set(device); // Set new device in Firebase
+        writeLog("New device: " + device.name + " created");
       }
     });
+  });
+
+  /**
+   * Add sensors
+   */
+  sensorRef.once("value", snapshot => {
+    const firebaseSensors = snapshotToArray(snapshot);
+
+    config.sensors.map(sensor => {
+      const sensorAlreadyInFirebase = firebaseSensors.find(firebaseSensor => {
+        return firebaseSensor.key === sensor.id;
+      });
+
+      if (!sensorAlreadyInFirebase) {
+        sensorRef.child(sensor.id).set(sensor); // Set new sensor in Firebase
+        writeLog("New sensor: " + sensor.id + " created");
+      }
+    });
+  });
+
+  /**
+   * Add rooms
+   */
+  roomRef.remove();
+  config.rooms.map(room => {
+    roomRef.child(room.id).set(room);
   });
 };
 
@@ -53,20 +76,13 @@ const registerFirebaseTopics = () => {
 const initAllDevicesOnStartup = () => {
   deviceRef.once("value", snapshot => {
     snapshotToArray(snapshot).map(device => {
-      handleDevice({
-        name: device.name.toString(),
-        value: device.value.toString(),
-        topic: device.topic.toString()
-      });
+      handleDevice(device);
     });
   });
 
   sensorRef.once("value", snapshot => {
     snapshotToArray(snapshot).map(sensor => {
-      handleSensor({
-        value: sensor.value.toString(),
-        topic: sensor.topic.toString()
-      });
+      handleSensor(sensor);
     });
   });
 };
@@ -79,7 +95,7 @@ automationRef.once("value", snapshot => {
 });
 
 const startupFunction = () => {
-  registerFirebaseTopics();
+  registerFirebaseDevices();
   initAllDevicesOnStartup();
 };
 

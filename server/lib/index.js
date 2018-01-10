@@ -14,7 +14,7 @@ let {
 /**
  * Import functions
  */
-const { handleDevice, handleSensor } = require("./devicesandsensors.js");
+const { handleDevice, handleSensor } = require("./handling.js");
 const { checkTimeBasedAutomation } = require("./automations.js");
 const { turnThermostatOnOff } = require("./thermostat.js");
 const { startupFunction } = require("./startup.js");
@@ -24,25 +24,14 @@ const { writeLog, snapshotToArray } = require("./helpers.js");
  * Watch for device changes in Firebase
  */
 deviceRef.on("child_changed", snapshot => {
-  const device = {
-    name: snapshot.val()["name"].toString(),
-    value: snapshot.val()["value"].toString(),
-    topic: snapshot.val()["topic"].toString()
-  };
-
-  handleDevice(device);
+  handleDevice(snapshot.val());
 });
 
 /**
  * Watch for sensor changes in Firebase
  */
 sensorRef.on("child_changed", snapshot => {
-  const sensor = {
-    value: snapshot.val()["value"].toString(),
-    topic: snapshot.val()["topic"].toString()
-  };
-
-  handleSensor(sensor);
+  handleSensor(snapshot.val());
 });
 
 /**
