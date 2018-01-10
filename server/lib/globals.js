@@ -16,7 +16,7 @@ const config = require("../config/config.json");
  */
 let automations = null;
 let thermostat = {
-  status: 0,
+  state: 0,
   value: 0
 };
 
@@ -28,8 +28,8 @@ const getAutomations = () => {
   return automations;
 };
 
-const setThermostat = (status, value) => {
-  status ? (thermostat.status = status) : null;
+const setThermostat = (state, value) => {
+  state ? (thermostat.state = state) : null;
   value ? (thermostat.value = value) : null;
 };
 
@@ -48,11 +48,18 @@ firebase.initializeApp({
 /**
  * Initialize MQTT client
  */
-const client = mqtt.connect(config.mqtt.host, {
-  username: config.mqtt.username ? config.mqtt.username : null,
-  password: config.mqtt.password ? config.mqtt.password : null,
-  port: config.mqtt.port ? config.mqtt.port : null
-});
+let client;
+if (config.mqtt.type === "external") {
+  client = mqtt.connect(config.mqtt.host, {
+    username: config.mqtt.username,
+    password: config.mqtt.password,
+    port: config.mqtt.port ? config.mqtt.port : 1883
+  });
+} else if (config.mqtt.type === "local") {
+  client = mqtt.connect(config.mqtt.host, {
+    port: config.mqtt.port ? config.mqtt.port : 1883
+  });
+}
 
 /**
  * Register Firebase references
@@ -60,6 +67,7 @@ const client = mqtt.connect(config.mqtt.host, {
 const deviceRef = firebase.database().ref("/devices");
 const sensorRef = firebase.database().ref("/sensors");
 const automationRef = firebase.database().ref("/automations");
+const roomRef = firebase.database().ref("/rooms");
 
 module.exports = {
   firebase: firebase,
@@ -68,6 +76,7 @@ module.exports = {
   deviceRef: deviceRef,
   sensorRef: sensorRef,
   automationRef: automationRef,
+  roomRef: roomRef,
   automations: automations,
   setAutomations: setAutomations,
   getAutomations: getAutomations,

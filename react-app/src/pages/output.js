@@ -13,18 +13,20 @@ const Container = styled.div`
   }
 `;
 
-const renderOutputTab = (page, devices, deviceRef) => {
-  return devices
-    .filter(device => device.platform === page.platform)
-    .map(device => {
-      return (
-        <Output device={device} deviceRef={deviceRef} key={device.topic} />
-      );
-    });
+const renderOutputTab = (page, deviceRef) => {
+  return page.devices.map(device => {
+    return (
+      <Output
+        deviceId={device}
+        deviceRef={deviceRef}
+        key={`container${device}`}
+      />
+    );
+  });
 };
 
-const OutputPage = ({ page, devices, deviceRef }) => {
-  return <Container>{renderOutputTab(page, devices, deviceRef)}</Container>;
+const OutputPage = ({ page, deviceRef }) => {
+  return <Container>{renderOutputTab(page, deviceRef)}</Container>;
 };
 
 export default OutputPage;

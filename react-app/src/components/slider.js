@@ -130,14 +130,18 @@ export default class Slider extends Component<PropTypes, StateTypes> {
         }}
         onClick={this.handleDrag}
       >
-        <Thumb
-          left={this.state.knobX}
-          onMouseDown={this.handleStart}
-          onTouchStart={this.handleStart}
-        />
-        <Tooltip left={this.state.knobX}>
-          {this.props.startValue + this.state.step}
-        </Tooltip>
+        {this.state.knobX ? (
+          <div>
+            <Thumb
+              left={this.state.knobX}
+              onMouseDown={this.handleStart}
+              onTouchStart={this.handleStart}
+            />
+            <Tooltip left={this.state.knobX}>
+              {this.props.startValue + this.state.step}
+            </Tooltip>
+          </div>
+        ) : null}
       </Track>
     );
   }

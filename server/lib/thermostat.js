@@ -14,22 +14,22 @@ let { deviceRef, thermostat } = require("./globals.js");
  * Check if thermostat has to be turned on or off
  */
 const checkThermostat = currentTemp => {
-  let returnValue;
+  let returnValue = null;
 
   if (currentTemp < thermostat.value) {
-    if (thermostat.status === "0") {
+    if (thermostat.state == "0") {
       returnValue = "1";
     }
   } else if (currentTemp >= thermostat.value) {
-    if (thermostat.status === "0") {
+    if (thermostat.state == "0") {
       returnValue = "0";
     } else if (
-      thermostat.status === "1" &&
+      thermostat.state == "1" &&
       parseInt(currentTemp) - 3 >= thermostat.value
     ) {
       returnValue = "0";
     } else {
-      if (thermostat.status === "0") {
+      if (thermostat.state == "0") {
         returnValue = "1";
       }
     }
@@ -46,7 +46,7 @@ const turnThermostatOnOff = value => {
 
   if (thermostatCheck) {
     deviceRef.child("thermostat").update({
-      value: thermostatCheck.toString()
+      state: thermostatCheck.toString()
     });
 
     // Log action

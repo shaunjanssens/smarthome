@@ -47,39 +47,42 @@ const Header = ({ page, changeTab }: PropTypes) => {
   return (
     <Container>
       <Icons>
-        {page.next !== null ? (
+        {page.id !== "automations" ? (
           <Icon
             onClick={() => {
-              changeTab("add");
+              changeTab(0, "automations");
             }}
           >
             <IconAdd />
           </Icon>
-        ) : (
+        ) : null}
+        {typeof page.index !== "number" ? (
           <Icon
             onClick={() => {
-              changeTab("lights");
+              changeTab(0);
             }}
           >
             <IconHome />
           </Icon>
-        )}
+        ) : null}
       </Icons>
-      <Content>
-        <Title>{page.title}</Title>
-        {page.next && (
-          <Next
-            onClick={() => {
-              changeTab(page.next);
-            }}
-          >
-            {page.next}
-            <Icon icon="next">
-              <IconArrow />
-            </Icon>
-          </Next>
-        )}
-      </Content>
+      {page ? (
+        <Content>
+          <Title>{page.name}</Title>
+          {page.next && (
+            <Next
+              onClick={() => {
+                changeTab(page.index + 1);
+              }}
+            >
+              {page.next}
+              <Icon icon="next">
+                <IconArrow />
+              </Icon>
+            </Next>
+          )}
+        </Content>
+      ) : null}
     </Container>
   );
 };

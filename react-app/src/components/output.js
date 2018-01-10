@@ -3,15 +3,16 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Toggle from "./toggle";
 import UpAndDown from "./upanddown";
+import Loading from "./loading";
 import type { DeviceType } from "../types";
 
 type PropTypes = {
-  device: DeviceType,
+  deviceId: string,
   deviceRef: any
 };
 
 type StateTypes = {
-  value: number
+  device?: DeviceType
 };
 
 const OutputContainer = styled.div`
@@ -45,51 +46,59 @@ const OutputName = styled.div`
 
 export default class Output extends Component<StateTypes, PropTypes> {
   state = {
-    value: 0
+    device: null
   };
 
   componentWillMount() {
     const that = this;
-    this.props.deviceRef
-      .child(this.props.device.topic)
-      .on("value", function(snapshot) {
-        const device = snapshot.val();
-        that.setState({ value: device.value });
-      });
+    const { deviceId, deviceRef } = this.props;
+
+    deviceRef.child(deviceId).on("value", function(snapshot) {
+      that.setState({ device: snapshot.val() });
+    });
   }
 
   changeDeviceStatus = status => {
-    this.props.deviceRef.child(this.props.device.topic).update({
-      value: status === 1 ? 0 : 1
+    const { deviceId, deviceRef } = this.props;
+    deviceRef.child(deviceId).update({
+      state: status === 0 ? 1 : 0
     });
   };
 
   render() {
-    const { device } = this.props;
-    const { value } = this.state;
+    const { deviceId, deviceRef } = this.props;
+    const { device } = this.state;
 
     if (device) {
-      if (device.platform === "lights") {
+      if (device.type === "light" || device.type === "outlet") {
         return (
-          <OutputContainer status={value}>
+          <OutputContainer status={device.state} key={device.id}>
             <OutputContent>
               <OutputName>{device.name}</OutputName>
-              <Toggle value={value} statusChange={this.changeDeviceStatus} />
+              <Toggle
+                value={device.state}
+                statusChange={this.changeDeviceStatus}
+              />
             </OutputContent>
           </OutputContainer>
         );
-      } else if (device.platform === "blinds") {
+      } else if (device.type === "blinds") {
         return (
-          <OutputContainer status={value}>
+          <OutputContainer status={device.state} key={device.id}>
             <OutputContent>
               <OutputName>{device.name}</OutputName>
-              <UpAndDown value={value} statusChange={this.changeDeviceStatus} />
+              <UpAndDown
+                value={device.state}
+                statusChange={this.changeDeviceStatus}
+              />
             </OutputContent>
           </OutputContainer>
         );
       }
     } else {
-      return null;
+      return <Loading />;
     }
+
+    return null;
   }
 }
