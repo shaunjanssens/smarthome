@@ -1,8 +1,8 @@
 {
-  "system": {
-    "name": "Smart Home",
-    "description":
-      "With Smart Home you can turn on your lights, close your blinds and control the inside temperature."
+  "smarthome": {
+    "name": "Smart home",
+    "timezone": "Europe/Brussels",
+    "locations": "Ghent, BE"
   },
   "firebase": {
     "type": "",
@@ -18,46 +18,141 @@
     "database_url": ""
   },
   "mqtt": {
+    "type": "external",
     "host": "",
     "port": ,
     "username": "",
     "password": ""
   },
   "ifttt": {
-    "apikey": ""
+    "api_key": ""
   },
-  "devices": [
-    {
-      "platform": "lights",
-      "name": "Living room",
-      "topic": "outlet-outlet1"
-    },
-    {
-      "platform": "lights",
-      "name": "Bedroom",
-      "topic": "light-light1"
-    },
-    {
-      "platform": "blinds",
-      "name": "Living room",
-      "topic": "blinds-blinds1"
-    },
-    {
-      "platform": "thermostat",
-      "name": "Thermostat",
-      "topic": "thermostat"
-    }
-  ],
   "sensors": [
     {
-      "platform": "temperature",
-      "name": "Temperature",
-      "topic": "temperature"
+      "id": "temperature",
+      "platform": "firebase",
+      "type": "temperature",
+      "value": "0",
+      "config": {
+        "path": "temperature"
+      }
     },
     {
-      "platform": "humidity",
-      "name": "Humidity",
-      "topic": "humidity"
+      "id": "humidity",
+      "platform": "firebase",
+      "type": "humidity",
+      "value": "0",
+      "config": {
+        "path": "humidity"
+      }
+    },
+    {
+      "id": "thermostat",
+      "platform": "firebase",
+      "type": "thermostat",
+      "value": "19",
+      "config": {
+        "path": "thermostat"
+      }
+    }
+  ],
+  "devices": [
+    {
+      "id": "shaun-bureaulamp",
+      "name": "Desk lamp",
+      "type": "light",
+      "platform": "mqtt",
+      "config": {
+        "topic": "shaun/desklamp"
+      }
+    },
+    {
+      "id": "shaun-nightlight",
+      "name": "Night light",
+      "type": "light",
+      "platform": "mqtt",
+      "config": {
+        "topic": "shaun/nightlicht"
+      }
+    },
+    {
+      "id": "shaun-outlet1",
+      "name": "Outlet 1",
+      "type": "outlet",
+      "platform": "rf433",
+      "config": {
+        "on_code": "",
+        "off_code": ""
+      }
+    },
+    {
+      "id": "shaun-outlet2",
+      "name": "Outlet 2",
+      "type": "outlet",
+      "platform": "rf433",
+      "config": {
+        "on_code": "",
+        "off_code": ""
+      }
+    },
+    {
+      "id": "livingroom-outlet1",
+      "name": "Outlet 1",
+      "type": "outlet",
+      "platform": "mqtt",
+      "config": {
+        "topic": "livingroom/outlet1"
+      }
+    },
+    {
+      "id": "livingroom-outlet2",
+      "name": "Outlet 2",
+      "type": "outlet",
+      "platform": "mqtt",
+      "config": {
+        "topic": "livingroom/outlet2"
+      }
+    },
+    {
+      "id": "shaun-blinds",
+      "name": "Blinds",
+      "type": "blinds",
+      "platform": "mqtt",
+      "config": {
+        "topic": "shaun/blinds"
+      }
+    },
+    {
+      "id": "thermostat",
+      "name": "thermostat",
+      "type": "thermostat",
+      "platform": "mqtt",
+      "config": {
+        "topic": "thermostat"
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "id": "shaun",
+      "name": "Shaun's room",
+      "order": 0,
+      "devices": [
+        "shaun-bureaulamp",
+        "shaun-nightlight",
+        "shaun-outlet1",
+        "shaun-outlet2",
+        "shaun-blinds"
+      ]
+    },
+    {
+      "id": "livingroom",
+      "name": "Living room",
+      "order": 1,
+      "devices": [
+        "livingroom-outlet1",
+        "livingroom-outlet2"
+      ]
     }
   ]
 }
