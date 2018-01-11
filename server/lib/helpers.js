@@ -4,6 +4,7 @@
  * Import packages
  */
 const fs = require("fs");
+const exec = require("child_process").exec;
 
 // TODO: log to dir (something with chmod?)
 const writeLog = message => {
@@ -26,7 +27,22 @@ const snapshotToArray = snapshot => {
   return returnArr;
 };
 
+/**
+ * Run python script with argument
+ */
+const executePythonScript = (scriptName, argument) => {
+  const scriptLocation = `./scripts/${scriptName}.py`;
+  exec(`${scriptLocation} ${argument}`, (error, stdout, stderr) => {
+    console.log(`${stdout}`);
+    console.log(`${stderr}`);
+    if (error !== null) {
+      console.log(`exec error: ${error}`);
+    }
+  });
+};
+
 module.exports = {
   writeLog,
-  snapshotToArray
+  snapshotToArray,
+  executePythonScript
 };
